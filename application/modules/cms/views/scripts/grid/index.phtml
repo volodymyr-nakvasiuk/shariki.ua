@@ -1,0 +1,68 @@
+<script type="text/javascript">
+	var store = new Ext.data.Store({
+		url: '/cms/grid/pages.php',
+		reader: new Ext.data.JsonReader({
+			root:'rows',
+			totalProperty: 'results',
+			idProperty:'mark_id'
+		}, [
+			{name: 'mark_id', type: 'int'},
+			{name: 'mark_name', type: 'string'},
+			{name: 'mark_short_description', type: 'string'},
+			{name: 'mark_description', type: 'string'},
+			{name: 'mark_small_logo', type: 'string'},
+			{name: 'mark_logo', type: 'string'}
+		])
+	});
+	store.load({params:{start:0, limit:20}});
+
+	function image_render(val){
+		return '<img src=/images/car_logos/'+val+' style="width: 100px"/>';
+	}
+
+    // create the Grid
+    var grid = new Ext.grid.GridPanel({
+        store: store,
+        columns: [
+			{header: "ID",               dataIndex: 'mark_id',                sortable: true},
+			{header: "Название",         dataIndex: 'mark_name',              sortable: true},
+			{header: "Краткое описание", dataIndex: 'mark_short_description', sortable: false, width: 300, id: 'sdesc'},
+			{header: "Полное писание",   dataIndex: 'mark_description',       sortable: false, width: 300, id: 'desc', hidden: true},
+			{header: "Превью логотипа",  dataIndex: 'mark_small_logo',        sortable: false, width: 110, renderer: image_render},
+			{header: "Логотип",          dataIndex: 'mark_logo',              sortable: false, width: 110, renderer: image_render}
+        ],
+        bbar: new Ext.PagingToolbar({
+        	pageSize: 20,
+        	store: store
+        }),
+        //title:'Марки',
+        stripeRows: true,
+		autoWidth: true,
+        height:550
+    });
+    
+    CARua.mygrid = function() {
+    	return {
+    		init: function() {
+    			var desktop = MyDesktop.getModule('grid-win').app.getDesktop();
+    			var win = desktop.getWindow('grid-win');
+    			if(!win){
+    				win = desktop.createWindow({
+    					id:'grid-win',
+    					title:'Марки',
+    					//autoWidth:true,
+    					//autoHeight:true,
+    					iconCls:'icon-grid',
+    					animCollapse:false,
+    					constrainHeader:true,
+    					items: grid
+    				});
+    			}
+    			Ext.get('loading').hide();
+    			win.show();
+    		}
+    	};
+    }();
+    
+	Ext.onReady(CARua.mygrid.init, CARua.mygrid);
+</script>

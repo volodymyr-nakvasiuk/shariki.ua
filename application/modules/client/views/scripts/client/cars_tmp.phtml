@@ -1,0 +1,692 @@
+<?php /* Метки
+<div class="carSign">
+	<h5>Метки:</h5>
+	<div class="left">
+		<div class="box">
+			<a href="">Acura</a> <a class="del" href=""></a>
+		</div>
+		<div class="box">
+			<a href="">MDX</a> <a class="del" href=""></a>
+		</div>
+		<div class="box">
+			<a href="">новая</a> <a class="del" href=""></a>
+		</div>
+		<div class="box">
+			<a href="">мои машины</a> <a class="del" href=""></a>
+		</div>
+		<div class="box">
+			<a href="">срочно продать</a> <a class="del" href=""></a>
+		</div>
+	</div>
+	<div class="right">
+		<a href="">Удалить все метки</a>
+	</div>
+	<div class="clear"></div>
+</div>
+*/?>
+
+<div class="AccountForm">
+	<div class="label inner_label"><a href="#home">Мой кабинет</a> &rarr; Мои объявления</div>
+	<div class="rc_t inner_box"><div class="rc_r"><div class="rc_b"><div class="rc_l">
+	<div class="rc_tl"><div class="rc_tr"><div class="rc_br"><div class="rc_bl">
+	<div class="user_content">
+		<h3>Ваши объявления:</h3>
+		<p class="desc">Воспользуйтесь нашей системой <strong><a target="_blank" href="/info/vip/">VIP объявлений</a></strong> для эффективной продажи вашего автомобиля.</p>
+		<div class="left addFilter">
+			<a target="_blank" href="/sell/" class="add">Добавить объявление</a>
+		</div>
+		<div class="count">
+			<span>Объявлений на странице:</span>
+			<select<?php /* onchange="javascript:document.location='/?p=&limit='+this.value+'';"*/?>>
+				<option value="10" selected="selected">10</option>
+				<option value="30">30</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
+		</div>
+		<div class="clear"></div>
+		<div class="box clear">
+			<div class="filters_content">
+				<div class="tc_tr"><div class="tc_br"><div class="tc_bl"><div class="tc_tl">
+					<div class="head">
+						<div class="sale b_ln">
+							<div><strong>Фото</strong><?php /*<a class="setup" href="">Настройки</a>*/?></div>
+						</div>
+						<div class="sale w_60">
+							<div><strong>Дата</strong></div>
+						</div>
+						<div class="sale">
+							<div><strong>Марка</strong></div>
+						</div>
+						<div class="sale">
+							<div><strong>Модель</strong></div>
+						</div>
+						<div class="sale">
+							<div><strong>Регион</strong></div>
+						</div>
+						<div class="sale w_60">
+							<div><strong>Год</strong></div>
+						</div>
+						<div class="sale w_60">
+							<div><strong>Пробег</strong></div>
+						</div>
+						<div class="sale w_60 b_rn">
+							<div><strong>Цена</strong></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div></div></div></div>
+			</div>
+		</div>
+		<div class="m_top15">
+			<div class="rc_t inner_box"><div class="rc_r"><div class="rc_b"><div class="rc_l">
+			<div class="rc_tl"><div class="rc_tr"><div class="rc_br"><div class="rc_bl">
+				<div class="header">
+					<div class="lt"></div>
+					<div class="content">
+						<div class="signVip"></div>
+						<div class="title">
+							Acura MDX <span>дополнительно</span>
+						</div>
+						<div class="link">
+							<a href="" class="wiew">просмотреть</a>
+							<a href="" class="edit" id="editLink_1">редактировать</a>
+							<a href="" class="delete">удалить</a>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="rt"></div>
+				</div>
+				<div class="box car_info">
+					<div class="sales p_rt">
+						<div class="p_n"><img width="90" src="/img/img1.gif" alt="" /></div>
+					</div>
+					<div class="sales w_60">
+						<div>01.01.2010</div>
+					</div>
+					<div class="sales">
+						<div>Acura</div>
+					</div>
+					<div class="sales">
+						<div>MDX</div>
+					</div>
+					<div class="sales">
+						<div>Симферополь</div>
+					</div>
+					<div class="sales w_60">
+						<div>2008</div>
+					</div>
+					<div class="sales w_60">
+						<div><strong>50</strong></div>
+					</div>
+					<div class="sales w_60">
+						<div><strong>$5000</strong></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="item">
+					<div class="signs">
+						<?php /*Acura <a class="del" href=""></a> MDX <a class="del" href=""></a> новая <a class="del" href=""></a> мои машины <a class="del" href=""></a> срочно продать <a class="del" href=""></a> обмен <a class="del" href=""></a>*/?>
+					</div>
+					<div class="stat">
+						<form action="" method="">
+							<input type="text" name="" value="Добавить метку" />
+							<input type="submit" value="" />
+						</form>
+					</div>
+					<div class="stat">
+					<div class="satus">
+						<div>
+							Статус:
+							<select>
+								<option value="1">активно</option>
+								<option value="0">не активно</option>
+							</select>
+						</div>
+					</div>
+					</div>
+					<div class="left">
+						<div class="getVip" car=""></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+<?php /*
+				<div id="editForm_1">
+				<form action="" method="post">
+				<!-- param -->
+				<input type="hidden" name="" value="" />
+				<div class="addBox">
+					<div class="panel">
+						<div class="columnLeft">
+							<div class="row">
+								<div class="label">Марка<sup>*</sup></div>
+								<div class="field">
+									<select name="" id="">
+										<option value="">Выберите марку</option>
+										<option value="">Alfa Romeo</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Модель<sup>*</sup></div>
+								<div class="field">
+									<select name="">
+										<option value="">Выберите модель</option>
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Дополнительно о модели</div>
+								<div class="field">
+									<input type="text" name="" value="" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Год выпуска<sup>*</sup></div>
+								<div class="field">
+									<input type="text" name="" value="" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Пробег<sup>*</sup></div>
+								<div class="field">
+									<input type="text" name="" value="" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Цена<sup>*</sup></div>
+								<div class="field">
+									<input type="text" name="" value="" class="w_84" />
+									<select name="" class="w_84">
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Область<sup>*</sup></div>
+								<div class="field">
+									<select name="">
+										<option value="">Выберите </option>
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Населенный пункт</div>
+								<div class="field">
+									<input type="text" name="" value="" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Объем двигателя (л)</div>
+								<div class="field">
+									<input type="text" name="" value="" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Об автомобиле</div>
+								<div class="field">
+									<textarea name="" cols="22" rows="5"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="columnRight">
+							<h5>Дополнительно:</h5>
+							<div class="row">
+								<div class="label">Привод</div>
+								<div class="field">
+									<select name="">
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Цвет</div>
+								<div class="field">
+									<select name="">
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Тип топлива</div>
+								<div class="field">
+									<select name="">
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Тип коробки передач</div>
+								<div class="field">
+									<select name="">
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Количество дверей</div>
+								<div class="field">
+									<select name="">
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="label">Тип кузова</div>
+								<div class="field">
+									<select name="">
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="user_content">
+						<div class="photoAdd">
+							<h5 class="tx_left">Добавить фото: <a href="" class="link">из картотеки car.ua</a></h5>
+							<div class="m_top15">
+								<input type="file" name="" />
+							</div>
+						</div>
+						<div class="photoPrev">
+							<div class="preview select">
+								<img width="90" src="/img/img1.gif" alt="" />
+								<a class="delete" href=""></a>
+								<div>обложка</div>
+							</div>
+							<div class="preview">
+								<img width="90" src="/img/img1.gif" alt="" />
+								<a class="delete" href=""></a>
+								<div>обложка</div>
+							</div>
+							<div class="preview">
+								<img width="90" src="/img/img1.gif" alt="" />
+								<a class="delete" href=""></a>
+								<div>обложка</div>
+							</div>
+							<div class="preview">
+								<img width="90" src="/img/img1.gif" alt="" />
+								<a class="delete" href=""></a>
+								<div>обложка</div>
+							</div>
+							<div class="preview">
+								<img width="90" src="/img/img1.gif" alt="" />
+								<a class="delete" href=""></a>
+								<div>обложка</div>
+							</div>
+							<div class="preview">
+								<img width="90" src="/img/img1.gif" alt="" />
+								<a class="delete" href=""></a>
+								<div>обложка</div>
+							</div>
+							<div class="preview">
+								<img width="90" src="/img/img1.gif" alt="" />
+								<a class="delete" href=""></a>
+								<div>обложка</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+				</div>
+				<div class="submit">
+					<input type="submit" class="save" name="" value="" />
+				</div>
+				</form>
+				</div>
+*/?>
+			</div></div></div></div>
+			</div></div></div></div>
+		</div>
+<?php /*
+	<!-- Car item start -->
+	<div class="m_top15 vip">
+		<div class="rc_t inner_box"><div class="rc_r"><div class="rc_b"><div class="rc_l">
+		<div class="rc_tl"><div class="rc_tr"><div class="rc_br"><div class="rc_bl">
+			<div class="header">
+				<div class="lt"></div>
+				<div class="content">
+					<div class="signVip"></div>
+					<div class="title">
+						Acura MDX <span>дополнительно</span>
+					</div>
+					<div class="link">
+						<a href="" class="wiew">просмотреть</a>
+						<a href="" class="edit" id="editLink_2">редактировать</a>
+						<a href="" class="delete">удалить</a>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="rt"></div>
+			</div>
+			<div class="box">
+				<div class="sales p_rt">
+					<div class="p_n"><img width="90" src="/img/img1.gif" alt="" /></div>
+				</div>
+				<div class="sales w_60">
+					<div>01.01.2010</div>
+				</div>
+				<div class="sales">
+					<div>Acura</div>
+				</div>
+				<div class="sales">
+					<div>MDX</div>
+				</div>
+				<div class="sales">
+					<div>Симферополь</div>
+				</div>
+				<div class="sales w_60">
+					<div>2008</div>
+				</div>
+				<div class="sales w_60">
+					<div><strong>50</strong></div>
+				</div>
+				<div class="sales w_60">
+					<div><strong>$5000</strong></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="item">
+				<div class="signs">
+					Acura <a class="del" href=""></a> MDX <a class="del" href=""></a> новая <a class="del" href=""></a> мои машины <a class="del" href=""></a> срочно продать <a class="del" href=""></a> обмен <a class="del" href=""></a>
+				</div>
+				<div class="stat">
+					<form action="" method="">
+						<input type="text" name="" value="Добавить метку" />
+						<input type="submit" value="" />
+					</form>
+				</div>
+				<div class="stat">
+				<div class="satus">
+					<div>
+						Статус:
+						<select name="">
+							<option value="">активно</option>
+						</select>
+					</div>
+				</div>
+				</div>
+				<div class="left">
+						<div class="getVip" car=""></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="editForm_2">
+			<form action="" method="post">
+			<!-- param -->
+			<input type="hidden" name="" value="" />
+			<div class="addBox">
+				<div class="panel">
+					<div class="columnLeft">
+						<div class="row">
+							<div class="label">Марка<sup>*</sup></div>
+							<div class="field">
+								<select name="" id="">
+									<option value="">Выберите марку</option>
+									<option value="">Alfa Romeo</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Модель<sup>*</sup></div>
+							<div class="field">
+								<select name="">
+									<option value="">Выберите модель</option>
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Дополнительно о модели</div>
+							<div class="field">
+								<input type="text" name="" value="" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Год выпуска<sup>*</sup></div>
+							<div class="field">
+								<input type="text" name="" value="" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Пробег<sup>*</sup></div>
+							<div class="field">
+								<input type="text" name="" value="" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Цена<sup>*</sup></div>
+							<div class="field">
+								<input type="text" name="" value="" class="w_84" />
+								<select name="" class="w_84">
+									<option value=""></option>
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Область<sup>*</sup></div>
+							<div class="field">
+								<select name="">
+									<option value="">Выберите </option>
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Населенный пункт</div>
+							<div class="field">
+								<input type="text" name="" value="" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Объем двигателя (л)</div>
+							<div class="field">
+								<input type="text" name="" value="" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Об автомобиле</div>
+							<div class="field">
+								<textarea name="" cols="22" rows="5"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="columnRight">
+						<h5>Дополнительно:</h5>
+						<div class="row">
+							<div class="label">Привод</div>
+							<div class="field">
+								<select name="">
+									<option value=""></option>
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Цвет</div>
+							<div class="field">
+								<select name="">
+									<option value=""></option>
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Тип топлива</div>
+							<div class="field">
+								<select name="">
+									<option value=""></option>
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Тип коробки передач</div>
+							<div class="field">
+								<select name="">
+									<option value=""></option>
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Количество дверей</div>
+							<div class="field">
+								<select name="">
+									<option value=""></option>
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="label">Тип кузова</div>
+							<div class="field">
+								<select name="">
+									<option value=""></option>
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="user_content">
+					<div class="photoAdd">
+						<h5 class="tx_left">Добавить фото: <a href="" class="link">из картотеки car.ua</a></h5>
+						<div class="m_top15">
+							<input type="file" name="" />
+						</div>
+					</div>
+					<div class="photoPrev">
+						<div class="preview select">
+							<img width="90" src="/img/img1.gif" alt="" />
+							<a class="delete" href=""></a>
+							обложка
+						</div>
+						<div class="preview">
+							<img width="90" src="/img/img1.gif" alt="" />
+							<a class="delete" href=""></a>
+						</div>
+						<div class="preview">
+							<img width="90" src="/img/img1.gif" alt="" />
+							<a class="delete" href=""></a>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+			</div>
+			<div class="submit">
+				<input type="submit" class="save" name="" value="" />
+			</div>
+			</form>
+			</div>
+		</div></div></div></div>
+		</div></div></div></div>
+	</div>
+	<!-- Car item end -->
+*/?>
+	</div>
+		<div class="clear"></div>
+	</div></div></div></div>
+	</div></div></div></div>
+</div>
+<div class="search_view_3_box" id="bottom_cars_box">
+		<div class="search_view_3_content"></div>
+		<div class="car_detail_comments_paging_box"></div>
+</div>
+
+<script>
+var car_id = 1233354;
+var model_id = 948;
+var fields = new Array(
+		{'name':'region_id',            'title':'Город'},
+		{'name':'article',              'title':'Дополнительно о модели'},
+		{'name':'body_type_id',         'title':'Тип кузова'},
+		{'name':'color_id',             'title':'Цвет'},
+		{'name':'body_doors',           'title':'Количевство дверей'},
+		{'name':'engine_volume',        'title':'Объем двигателя'},
+		{'name':'fuel_id',              'title':'Тип топлива'},
+		{'name':'transmission_type_id', 'title':'Тип коробки передач'},
+		{'name':'mileage',              'title':'Пробег (тыс.км)'},
+		{'name':'drive',                'title':'Привод'},
+		{'name':'year',                 'title':'Год выпуска'},
+		{'name':'created_date',         'title':'Дата добавления'}
+	);
+	
+	var paramsTemplate = '';
+	for (var i in fields){
+		if (typeof fields[i] != 'function'){
+			paramsTemplate = paramsTemplate+
+				'${'+fields[i]['name']+':condition("'+
+				'<div class="view_3_param view_3_field_'+fields[i]['name']+'">'+
+				'	<div class="view_3_car_param_name">'+fields[i]['title']+'</div>'+
+				'	<div class="view_3_car_param_value">${'+fields[i]['name']+'}</div>'+
+				'</div>","")}';
+		}
+	}
+
+$("#bottom_cars_box").jComments({
+	form_showhide:  '#car_detail_comments_form_toggle',
+	loading: '#loading',
+	//postSetComments: tooltip_init,
+	
+	comment_template:   '<div class="search_view_3_car${vip:condition(" search_view_3_car_vip","")}${thiscar:condition(" search_view_3_car_this","")}">'+
+						'	<div class="tooltip_body_hidden">'+
+						'		<div class="tooltip_body_content">'+
+						'			<div class="search_view_3_car_header">'+
+						'				${mark} ${model}'+
+						'			</div>'+
+						'			<div class="search_view_3_car_image">'+
+						'				<img src="${img_big}" alt="${mark} ${model}" />'+
+						'			</div>'+
+						'			<div class="search_view_3_car_params">'+
+										paramsTemplate+
+						'			</div>'+
+						'			<div class="view_3_price"><b>${price}</b></div>'+
+						'		</div>'+
+						'	</div>'+
+						'	<div class="view_3_car_desc car_tooltip">'+
+						'		<div class="view_3_car_img">'+
+						'			<a href="${link}" target="_blank">'+
+						'				<img src="${img_small}" alt="${mark} ${model}" />'+
+						'			</a>'+
+						'		</div>'+
+						'		<div class="view_3_car_name">'+
+						'			<a href="${link}" target="_blank">'+
+						'				${mark} ${model}'+
+						'			</a>'+
+						'		</div>'+
+						'		<div class="view_3_car_price"><b>${price}</b></div>'+
+						'	</div>'+
+						'	<div class="view_3_field_chbx_value">'+
+						'		${vip:condition("<div class="vip_star" vip="${vip}"></div>","")}'+
+						'		<input class="cmp_chbx" type="checkbox"/>'+
+						'	</div>'+
+						'</div>',
+						
+	comments_box: ".search_view_3_content",
+		
+	paging_template: {
+		first: '${status:condition("<span><a href="/ajaxcarsearch/load/?p=${page}"><img src="http://static.car.ua/img/page_arrow_first.gif"/></a></span>", "<span><img src="http://static.car.ua/img/page_arrow_first.gif"/></span>")}',
+		prev:  '${status:condition("<span><a href="/ajaxcarsearch/load/?p=${page}"><img src="http://static.car.ua/img/page_arrow_prev.gif"/></a></span>", "<span><img src="http://static.car.ua/img/page_arrow_prev.gif"/></span>")}',
+		next:  '${status:condition("<span><a href="/ajaxcarsearch/load/?p=${page}"><img src="http://static.car.ua/img/page_arrow_next.gif"/></a></span>", "<span><img src="http://static.car.ua/img/page_arrow_next.gif"/></span>")}',
+		last:  '${status:condition("<span><a href="/ajaxcarsearch/load/?p=${page}"><img src="http://static.car.ua/img/page_arrow_last.gif"/></a></span>", "<span><img src="http://static.car.ua/img/page_arrow_last.gif"/></span>")}',
+		link:  '${status:condition("<span class="page_link"><a href="/ajaxcarsearch/load/?p=${page}">${page}</a></span>", "<span class="page_now">${page}</span>")}'
+	},
+	
+	paging_box: ".car_detail_comments_paging_box",
+	post_params: {car_id: car_id, model_id: model_id, searchref:1}
+}).loadComments('/ajaxcarsearch/load/?p=1');
+</script>

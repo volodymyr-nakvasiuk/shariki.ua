@@ -1,0 +1,120 @@
+button.create {
+	background-image: url(/cms/images/icons/add.png) !important;
+}
+button.upload {
+	background-image: url(/cms/images/icons/add_multi.png) !important;
+}
+button.createmulti {
+	background-image: url(/cms/images/icons/add_multi.png) !important;
+}
+button.edit {
+	background-image: url(/cms/images/icons/edit.png) !important;
+}
+button.remove {
+	background-image: url(/cms/images/icons/cross.png) !important;
+}
+button.save {
+	background-image: url(/cms/images/icons/save.png) !important;
+}
+button.refresh {
+	background-image: url(/cms/images/icons/refresh.png) !important;
+}
+button.duplicate {
+	background-image: url(/cms/images/icons/duplicate.png) !important;
+}
+
+.x-btn-over button.create {
+	background-image: url(/cms/images/icons/add_over.png) !important;
+}
+.x-btn-over button.upload {
+	background-image: url(/cms/images/icons/add_multi_over.png) !important;
+}
+.x-btn-over button.createmulti {
+	background-image: url(/cms/images/icons/add_multi_over.png) !important;
+}
+.x-btn-over button.edit {
+	background-image: url(/cms/images/icons/edit_over.png) !important;
+}
+.x-btn-over button.remove {
+	background-image: url(/cms/images/icons/cross_over.png) !important;
+}
+.x-btn-over button.save {
+	background-image: url(/cms/images/icons/save_over.png) !important;
+}
+.x-btn-over button.refresh {
+	background-image: url(/cms/images/icons/refresh_over.png) !important;
+}
+.x-btn-over button.duplicate {
+	background-image: url(/cms/images/icons/duplicate_over.png) !important;
+}
+
+.x-btn-click button.create {
+	background-image: url(/cms/images/icons/add.png) !important;
+}
+.x-btn-click button.upload {
+	background-image: url(/cms/images/icons/add_multi.png) !important;
+}
+.x-btn-click button.createmulti {
+	background-image: url(/cms/images/icons/add_multi.png) !important;
+}
+.x-btn-click button.edit {
+	background-image: url(/cms/images/icons/edit.png) !important;
+}
+.x-btn-click button.remove {
+	background-image: url(/cms/images/icons/cross.png) !important;
+}
+.x-btn-click button.save {
+	background-image: url(/cms/images/icons/save.png) !important;
+}
+.x-btn-click button.refresh {
+	background-image: url(/cms/images/icons/refresh.png) !important;
+}
+.x-btn-click button.duplicate {
+	background-image: url(/cms/images/icons/duplicate.png) !important;
+}
+img.drop7 {
+	background: transparent url(/cms/images/menu/buy.gif) no-repeat;
+}
+img.drop8 {
+	background: transparent url(/cms/images/menu/sell.gif) no-repeat;
+}
+img.messages {
+	background: transparent url(/cms/images/menu/messages.gif) no-repeat;
+}
+img.aprice {
+	background: transparent url(/cms/images/menu/aprice.gif) no-repeat;
+}
+img.bookmarks {
+	background: transparent url(/cms/images/menu/bookmarks.gif) no-repeat;
+}
+img.cmp {
+	background: transparent url(/cms/images/menu/cmp.gif) no-repeat;
+}
+img.price {
+	background: transparent url(/cms/images/menu/price.gif) no-repeat;
+}
+img.nprice {
+	background: transparent url(/cms/images/menu/nprice.gif) no-repeat;
+}
+img.profile-tab {
+	background: transparent url(/cms/images/menu/user.gif) no-repeat;
+}
+img.referal-client-stats {
+	background: transparent url(/cms/images/menu/present.gif) no-repeat;
+}
+.x-edit-insertimage {
+	background: transparent url(/cms/images/icons/image.gif) no-repeat !important;
+	background-position: 0 0 !important;
+}
+.x-editor-full-screen {
+	background: transparent url(/cms/images/icons/fullscreen.gif) no-repeat !important;
+	background-position: 0 0 !important;
+}
+.x-editor-insert-server-image{
+	background: transparent url(/cms/images/icons/server_picture.png) no-repeat !important;
+	background-position: 0 0 !important;
+}
+.x-editor-insert-server-flash{
+	background: transparent url(/cms/images/icons/server_flv.gif) no-repeat !important;
+	background-position: 0 0 !important;
+}

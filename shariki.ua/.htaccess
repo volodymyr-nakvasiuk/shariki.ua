@@ -1,0 +1,66 @@
+AddDefaultCharset UTF-8
+php_value register_globals 0
+php_value magic_quotes_gpc 0
+
+#php_value xdebug.remote_enable 1
+#php_value xdebug.remote_autostart On
+#php_value xdebug.var_display_max_children 300
+#php_value xdebug.var_display_max_depth 9
+#php_value xdebug.var_display_max_data 2000
+
+#php_value xdebug.profiler_enable On
+#php_value xdebug.profiler_output_dir "C:\Program Files\Zend\ZendServer\tmp\xdebug\cachegrid"
+#php_value xdebug.profiler_append On
+#php_value xdebug.profiler_output_name "cachegrind.out.%t.%p"
+
+#php_value xdebug.auto_trace On
+#php_value xdebug.trace_format 0
+#php_value xdebug.collect_params 1
+#php_value xdebug.collect_return 1
+#php_value xdebug.collect_includes 1
+#php_value xdebug.trace_options 1
+#php_value xdebug.trace_output_dir "C:\Program Files\Zend\ZendServer\tmp\xdebug\trace"
+
+#php_value xdebug.show_local_vars 1
+#php_value xdebug.dump_globals On
+#php_value xdebug.collect_params 4
+
+RewriteEngine On
+RewriteBase /
+
+#RewriteCond %{REQUEST_METHOD} ^POST
+#RewriteRule .* - [S=6]
+#RewriteRule /news-images/(.*)\.(js|ico|gif|jpg|jpeg|png|css|zip|gz|html|xml|bmp|swf|flv|JS|ICO|GIF|JPG|JPEG|PNG|CSS|ZIP|GZ|HTML|XML|BMP|SWF|FLV)$ /news/news-images/$1\.$2
+#RewriteRule server-status2 - [L]
+#RewriteRule ^/(.*)/$ /$1 [QSA]
+#RewriteRule ^$ html/index.html [QSA]
+#RewriteRule ^([^.]+)/$ html/$1.html [QSA]
+#RewriteRule ^([^.]+)$ html/$1.html [QSA]
+
+#RewriteCond %{REQUEST_FILENAME} -s [OR]
+#RewriteCond %{REQUEST_FILENAME} -l [OR]
+#RewriteCond %{REQUEST_FILENAME} -d 
+
+#RewriteRule ^.*$ - [NC,L]
+#RewriteRule ^.*$ /zend.php [NC,L]
+
+#RewriteEngine on
+#RewriteBase /
+
+#RewriteRule !(cms|catalog|client|bookmarks|cmp|test|registration|azs|ajax|messages|\.(js|ico|gif|jpg|jpeg|png|css|zip|gz|html|xml|bmp|swf|flv|JS|ICO|GIF|JPG|JPEG|PNG|CSS|ZIP|GZ|HTML|XML|BMP|SWF|FLV)$) /index.php
+#RewriteRule !^(catalog|cms|client|bookmarks|cmp|test|messages|registration|azs|ajax).* - [S=2]
+
+RewriteCond %{REQUEST_METHOD} ^GET
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+RewriteCond %{REQUEST_METHOD} ^GET
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+
+RewriteRule ^(pad2).* - [S=2]
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule !\.(js|ico|gif|jpg|jpeg|png|css|zip|gz|html|xml|bmp|swf|flv|JS|ICO|GIF|JPG|JPEG|PNG|CSS|ZIP|GZ|HTML|XML|BMP|SWF|FLV)$ zend.php
+
+#deny from 67.225.108.126
+#RewriteCond %{REQUEST_URI} !(.*blog/)

@@ -1,0 +1,84 @@
+<div class="header">
+	<div class="lt"></div>
+	<div class="content">
+		${vip:condition(" <div class="vip_star" vip="${vip}"></div>","")}
+		<div class="title reload" template="<?php echo $this->templatizate('${mark.mark_name} ${model.model_name}${article:condition(" <span>${article}","")}</span>');?>">
+			<?php echo $this->lastTmplt;?>
+		</div>
+		<div class="link">
+			<span class="reload" template="<?php echo $this->templatizate('<a href="/buy/${type}/${mark.mark_link}/${model.model_link}/${price_id}/" class="wiew" target="_blank">просмотреть</a>');?>">
+				<?php echo $this->lastTmplt;?>
+			</span>
+			<a href="javascript:void(0);" class="edit">редактировать</a>
+			<a href="javascript:void(0);" class="delete">удалить</a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="rt"></div>
+</div>
+<div class="box car_info">
+	<div class="sales p_rt">
+		<div class="p_n"><img width="80" height="52" src="${photo:condition("/uploads/images/${photos_subdir}/${price_id}/small/${photo}","/img/nophoto_n.gif")}" alt="Фото ${mark.mark_name} ${model.model_name}" /></div>
+	</div>
+	<div class="sales w_60">
+		<div>${created_date:substr(0,10)}</div>
+	</div>
+	<div class="sales">
+		<div class="reload" template="<?php echo $this->templatizate('${mark.mark_name}');?>">
+			<?php echo $this->lastTmplt;?>
+		</div>
+	</div>
+	<div class="sales">
+		<div class="reload" template="<?php echo $this->templatizate('${model.model_name}');?>">
+			<?php echo $this->lastTmplt;?>
+		</div>
+	</div>
+	<div class="sales">
+		<div class="reload" template="<?php echo $this->templatizate('${region}');?>">
+			<?php echo $this->lastTmplt;?>
+		</div>
+	</div>
+	<div class="sales w_60">
+		<div class="reload" template="<?php echo $this->templatizate('${year}');?>">
+			<?php echo $this->lastTmplt;?>
+		</div>
+	</div>
+	<div class="sales w_60">
+		<div style="padding-top:10px;">
+			<strong class="reload" template="<?php echo $this->templatizate('${mileage}<br/>тыс.км.');?>">
+				<?php echo $this->lastTmplt;?>
+			</strong>
+		</div>
+	</div>
+	<div class="sales w_60">
+		<div style="padding-top:10px;">
+			<strong class="reload" template="<?php echo $this->templatizate('${price}<br/>${currency}');?>">
+				<?php echo $this->lastTmplt;?>
+			</strong>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="item">
+	<div class="signs">
+	</div>
+	<div class="stat">
+	</div>
+	<div class="stat">
+	<div class="satus">
+<?php /*
+	//	<div>
+	//		Статус:
+	//		<select>
+	//			<option value="1">активно</option>
+	//			<option value="0">не активно</option>
+	//		</select>
+	//	</div>
+*/?>
+	</div>
+	</div>
+	<div class="left">
+		<div class="getVip" car="${price_id}"></div>
+	</div>
+	<div class="clear"></div>
+</div>

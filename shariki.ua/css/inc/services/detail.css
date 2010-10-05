@@ -1,0 +1,12 @@
+div.services_content table.services_content{
+	margin: 20px 20px 0 0;
+	text-align: justify;
+}
+
+div.services_content h3{
+	font-size: 16px;
+	color: #2d002d;
+}
+div.services_content img.services_photo{
+	margin: 0 55px 0 20px;
+}

@@ -1,0 +1,17 @@
+div.partners_box_content {
+	margin:10px 0 0 20px;
+}
+div.partners_label {
+	clear:both;
+	float:none;
+	font-size:14px;
+}
+div.partners_content {
+	clear:both;
+	float:none;
+}
+div.partners_content div.partners_item {
+	clear:none;
+	float:left;
+	margin-right:50px;
+}

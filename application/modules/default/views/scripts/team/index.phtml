@@ -1,0 +1,9 @@
+<div class="team_content">
+	<?php foreach ($this->data as $team){?>
+		<div class="team_content_item">
+			<div class="team_content_photo"><img alt="<?php echo $team['team_name'];?>" src="/uploads/images/team/<?php echo $team['team_id'].'/middle/'.$team['team_photo'];?>"/></div>
+			<div class="team_content_name"><?php echo $team['team_name'];?></div>
+			<div class="team_content_text"><?php echo $team['team_title'];?></div>
+		</div>
+	<?php }?>
+</div>

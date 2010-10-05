@@ -1,0 +1,284 @@
+<script type="text/javascript">
+myEngine.users = function (){
+	// Remove selected
+	var remove = function () {
+	var m = grid.getSelections();
+	if(m.length > 0) {
+		Ext.MessageBox.confirm('Информация', 'Вы действительно хотите удалить выбранные элементы?' , function (btn) {
+					if(btn == 'yes') {
+							var jsonData = '[{';
+							for(var i = 0, len = m.length; i < len; i++) {
+									var ss = '"'+i+'":"' + m[i].get('id') + '"';
+									if(i==0) {
+											jsonData = jsonData + ss;
+										} else {
+											jsonData = jsonData + ',' + ss;
+									}
+									store.remove(m[i]);
+							}
+							jsonData = jsonData + '}]';
+							new Ext.data.Store({
+									autoLoad:true,
+									baseParams:{
+										'delete':jsonData
+									},
+									failure:function(form, action) {
+										Ext.MessageBox.alert('Ошибка', action.result.msg);
+									},
+									proxy:new Ext.data.HttpProxy({
+										url:'/cms/grid/users/remove'
+									}),
+									remoteSort:false
+							});
+				}
+		});
+	} else {
+			Ext.MessageBox.alert('Информация', 'Нет выбраных элементов');
+	}
+	};
+
+	// Edit selected
+	var edit = function () {
+			var m = grid.getSelections();
+			if(m.length == 1) {
+				editWindow.show(this);
+				editForm.form.load({
+					url:'/cms/grid/users/edit',
+					params:{
+						id:m[0].get('id')
+					},
+					waitMsg:'Подождите...'
+				});
+			} else {
+				Ext.MessageBox.alert('Информация', 'Выберите только один элемент');
+			}
+	};
+
+	// ContextMenu
+	var contextMenu = function (grid, rowIndex, e){
+			e.stopEvent();
+			grid.getSelectionModel().selectRow(rowIndex);
+			var ctxMenu = new Ext.menu.Menu({
+			id:'copyCtx',
+			items: [{
+					text:'Редактировать запись',
+					iconCls:'edit',
+					handler:edit
+				},{
+					text: 'Удалить запись',
+					iconCls:'remove',
+					handler:remove
+				},'-',{
+					text: 'Перезагрузить',
+					iconCls:'refresh',
+					handler:function() {
+					store.reload();
+				}
+			}]
+			});
+			ctxMenu.showAt(e.getXY());
+			e.preventDefault();
+	};
+
+	// Form
+	var editForm = new Ext.FormPanel({
+		baseCls: 'x-plain',
+		labelWidth:75,
+		autoHeight:true,
+		labelAlign:'top',
+		buttonAlign:'right',
+		border:false,
+		reader:new Ext.data.JsonReader({},['id', 'login', 'name', 'email', 'active']),
+		items:[new Ext.form.TextField({
+			fieldLabel:'Логин',
+			name:'login',
+			anchor:'100%'
+		}), 
+		new Ext.form.TextField({
+			fieldLabel:'Название',
+			name:'name',
+			anchor:'100%'
+		}), 
+		new Ext.form.TextField({
+			fieldLabel:'Email',
+			name:'email',
+			anchor:'100%'
+		}), 
+		new Ext.form.TextField({
+			fieldLabel:'Проль',
+			inputType:'password',
+			name:'password',
+			anchor:'100%'
+		}), 
+		new Ext.form.Checkbox({
+			fieldLabel:'Активный',
+			name:'active'
+		}), 
+		new Ext.form.Hidden({
+			name:'id',
+			allowBlank:true
+		})]
+	});
+
+	// edit Window
+	var editWindow = new Ext.Window({
+	title:'Добавить/Редактировать',
+	width:400,
+	closeAction:'hide',
+	layout: 'fit',
+	bodyStyle:'padding:10px;',
+	autoHeight:true,
+	buttonAlign:'right',
+	items:editForm,
+	buttons:[{
+		text:'Отправить',
+		iconCls:'save',
+			handler:function() {
+				if (editForm.form.isValid()) {
+					editForm.form.submit({
+						waitMsg:'Подождите...',
+						url:'/cms/grid/users/save',
+						failure:function(form, action) {
+							Ext.MessageBox.alert('Ошибка', action.result.msg);
+						},
+						success:function(form, action) {
+							Ext.MessageBox.alert('Информация', 'Данные успешно сохранены');
+							editWindow.hide();
+							store.load({params:{start:0, limit:25}});
+						}
+					});
+				} else {
+						Ext.MessageBox.alert('Ошибка', 'введите корректные данные');
+				}
+			}
+		}, {
+		text:'Отмена',
+		handler:function(){
+			editWindow.hide();
+		}
+		}]
+	});
+
+	// Grid Store
+	var store = new Ext.data.Store({
+		autoLoad:true,
+		proxy:new Ext.data.HttpProxy({
+			url:'/cms/grid/users/list'
+		}),
+		baseParams:{
+			limit:25
+		},
+		listeners:Ext.ux.loaderListener,
+		reader:new Ext.data.JsonReader({
+			root:'items',
+			totalProperty:'total',
+			id:'id'
+		}, ['id', 'login', 'name', 'email', 'active']),
+		remoteSort:true
+	});
+
+// Grid
+var grid = new Ext.grid.GridPanel({
+border:false,
+ds:store,
+cm:new Ext.grid.ColumnModel([new Ext.grid.RowNumberer(), {
+header:'Логин',
+sortable: true,
+dataIndex:'login'
+}, {
+header:'Название',
+dataIndex:'name',
+sortable: true,
+width:150
+}, {
+header:'Email',
+dataIndex:'email',
+sortable: true,
+width:150
+}, {
+header:'Активный',
+dataIndex:'active',
+align:'center',
+renderer:function(val){
+if(val) {
+return 'Да';
+} else {
+return 'Нет';
+}
+},
+width:70
+}]),
+viewConfig:{
+forceFit:true
+},
+bbar:new Ext.PagingToolbar({
+store:store,
+pageSize:25,
+displayInfo:true,
+displayMsg:'Отображаются элементы {0} - {1} из {2}',
+emptyMsg:'Нет элементов для отображения'
+}),
+tbar:[{
+text:'Добавить',
+tooltip:'Добавить новый элемент',
+iconCls:'add',
+handler:function () {
+editWindow.show(this);
+editForm.form.reset();
+}
+}, '-', {
+text:'Редактировать выделенный',
+tooltip:'Редактировать выделенный элемент',
+iconCls:'edit',
+handler:edit
+}, '-', {
+text:'Удалить выбранные',
+tooltip:'Удалить выделенные элементы',
+iconCls:'remove',
+handler:remove
+}]
+});
+
+// public space
+return {
+// public methods
+init: function() {
+var desktop = MyDesktop.getModule('users-win').app.getDesktop();
+var win = desktop.getWindow('users-win');
+if(!win){
+win = desktop.createWindow({
+id:'users-win',
+title:'Пользователи сайта',
+width:620,
+height:500,
+tools:[{
+id:'help',
+handler: function(){
+Ext.get('loading').show();
+Ext.get('loader').load({
+waitMsg:'Подождите...',
+url:'/admin/help/index/context/users',
+scripts:true
+});
+}
+}],
+iconCls:'bogus',
+shim:false,
+animCollapse:false,
+constrainHeader:true,
+layout:'fit',
+items:grid
+});
+grid.on('rowdblclick', edit);
+grid.on('rowcontextmenu', contextMenu);
+} else {
+Ext.MessageBox.alert('Ошибка', 'Извините модуль уже запущен!');
+}
+Ext.get('loading').hide();
+win.show();
+}
+};
+}();
+
+Ext.onReady(myEngine.users.init, myEngine.users);
+</script>

@@ -1,0 +1,19 @@
+div.bottom_footer_box {
+	margin-top: 10px;
+}
+div.footer_copyright {
+	clear: none;
+	float: left;
+	margin-left: 20px;
+}
+div.footer_copyright span {
+	text-decoration: underline;
+}
+div.footer_designedby {
+	clear: none;
+	float: right;
+	margin-right: 20px;
+}
+div.footer_designedby span {
+	text-decoration: underline;
+}

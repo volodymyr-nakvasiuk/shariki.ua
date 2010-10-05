@@ -1,0 +1,57 @@
+<?php
+$row_data = $this->data['data'][0];
+?>
+<script type="text/javascript">
+	crud.mygallerymultiphoto = function() {
+		return {
+			init: function() {
+				var desktop = MyDesktop.getModule('grid-win-egallery').app.getDesktop();
+				var win = desktop.getWindow('grid-win-egallery-multiphoto');
+				if(!win){
+					win = desktop.createWindow({
+						id:'grid-win-egallery-multiphoto',
+						title:'Загрузка пакета фото',
+						animCollapse:false,
+						constrainHeader:true,
+	    				shim:false,
+	    				post_var_name: 'photos_name',
+	    				iconCls:'icon-grid',
+	    				url: '/cms/form/egallery/save',
+	    				base_params: {
+	    					'order' : '50',
+	    					'title' : "<?php echo $row_data['mark_link'].' -> '.$row_data['model_link'].' -> '.$row_data['generation_name'];?>",
+	    					'main' : '0',
+		    			    'type' : '1',
+		    			    'visible' : '1'
+	    				},
+	    				permitted_extensions: ['jpg', 'gif', 'jpeg', 'png', 'bmp'],
+						reset_on_hide: false,
+						allow_close_on_upload: false,
+						upload_autostart: false
+					}, Ext.ux.UploadDialog.Dialog);
+					
+					win.on('uploadcomplete', function (){
+						var desktop = MyDesktop.getModule('grid-win-egallery').app.getDesktop();
+                    	var items = desktop.getWindow('grid-win-egallery').items;
+                    	var i;
+                    	for (i=0;i<items.getCount();i++){
+                    		var xtype = items.get(i).getXType();
+                    		if (xtype == 'editorgrid' || xtype == 'grid'){
+                    			items.get(i).getStore().reload();
+                    		}
+                    	}
+						//var win = desktop.getWindow('grid-win-egallery-multiphoto');
+						//win.close();
+					}); 
+				}
+				Ext.get('loading').hide();
+				var bp = win.getBaseParams();
+				bp['generation'] = '<?php echo $row_data['generation_id'];?>';
+				win.setBaseParams(bp);
+				win.show();
+			}
+		};
+	}();
+
+	Ext.onReady(crud.mygallerymultiphoto.init, crud.mygallerymultiphoto);
+</script>

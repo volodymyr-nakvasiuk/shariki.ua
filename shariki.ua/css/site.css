@@ -1,0 +1,157 @@
+body,html {
+	/*background: url(/img/body_bg.png) 0 0 repeat-x;*/
+	margin: 0;
+}
+a {
+	outline: none;
+}
+div.all_site_body_box {
+	background: none !important;
+	width:100%;
+}
+#x-desktop{
+	height:100%;
+}
+div#site-desktop {
+	/*overflow: auto;*/
+	width: 100%;
+	height:100%;
+	/*display: none;*/
+}
+div.desktop_site_box {
+	width: 100%;
+	min-width:800px;
+}
+* html div.desktop_site_box{
+	width: expression(this.scrollWidth<801?"800px":"100%");
+}
+#loading {
+	position: fixed;
+	left: 45%;
+	top: 40%;
+	padding: 2px;
+	z-index: 20001;
+	height: auto;
+	border: solid 1px #777777;
+	background: white;
+	color: #555;
+	font: bold 13px tahoma, arial, helvetica;
+	text-align: center;
+}
+
+#loading img {
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+#loading .loading-indicator {
+	margin: 10px;
+	padding: 0;
+	width: 94px;
+	height: 15px;
+	background: url(/cms/images/progress.gif) 0 0 no-repeat;
+}
+div.all_site_box {
+	width: 100%;
+	margin: 0 auto;
+	padding-bottom: 30px;
+	font:12px Tahoma,Verdana,sans-serif;
+	color:#000;
+}
+div.all_site_box div{
+	overflow:hidden;
+}
+div.all_site_box div.lnk{
+	cursor: pointer;
+}
+div.all_site_box a.lnk{
+	text-decoration: none;
+}
+div.all_site_box a{
+	outline:none;
+	text-decoration: none;
+	font:12px Tahoma,Verdana,sans-serif;
+	color:#000;
+}
+div.all_site_box img{
+	border: none;
+	display: block;
+}
+div.all_site_box form,fieldset{
+	margin:0;
+	padding:0;
+	border:none;
+}
+div.all_site_box ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+div.all_site_box h1,
+div.all_site_box h2,
+div.all_site_box h3,
+div.all_site_box h4,
+div.all_site_box h5,
+div.all_site_box h6,
+div.all_site_box p{
+	margin:0;
+}
+div.all_site_box div.relative{
+	position:relative;
+}
+div.site_hr {
+	clear: both;
+	float: none;
+}
+div.helper {
+	display:-moz-inline-box;
+	display:inline-block;
+	vertical-align:middle;
+	height:100%;
+	width:0px;
+	zoom:1;
+	//display:inline;
+}
+div.site_menu_box {
+	clear: both;
+	float: none;
+}
+div.site_header {
+	clear:none;
+	float:left;
+	width: 100%;
+	height: 140px;
+	white-space:nowrap;
+}
+div.site_content_box {
+	clear: both;
+	float: none;
+	margin-top:20px;
+}
+div.content_center_box {
+	clear: both;
+	float: none;
+	margin-left: 20px;
+}
+div.content_left_box {
+	clear: both;
+	float: none;
+	margin-left: 20px;
+}
+.site_content tr td.site_content_left {
+	width: 200px;
+}
+div.center_top_box {
+	clear: both;
+	float: none;
+}
+.bottom_dashed {
+	border-bottom: 1px dashed;
+	text-decoration: none;
+}
+div.site_bottom_box {
+	margin-top: 10px;
+}
+* html div.site_bottom_box {
+	margin-top: 0;
+}

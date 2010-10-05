@@ -1,0 +1,18 @@
+<div class="partners_box_content">
+<div class="partners_label">Наши партнеры</div>
+<div class="partners_content">
+<?php
+	foreach ($this->partners as $partner){
+		$preTag = ''; $postTag = '';
+		if ($partner['partners_url']) {
+			$preTag = '<a href="'.$partner['partners_url'].'">'; $postTag = '</a>';
+		}
+?>
+	<div class="partners_item">
+		<?php echo $preTag;?>
+			<img alt="<?php echo $partner['partners_title'];?>" title="<?php echo $partner['partners_title'];?>" src="/uploads/images/partners/<?php echo $partner['partners_id'].'/small/'.$partner['partners_logo'];?>"
+		<?php echo $postTag;?>
+	</div>
+<?php }?>
+</div>
+</div>

@@ -1,0 +1,7 @@
+AddDefaultCharset UTF-8
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^(pad2).* - [S=2]
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule !\.(js|ico|gif|jpg|jpeg|png|css|zip|gz|html|xml|bmp|swf|flv|JS|ICO|GIF|JPG|JPEG|PNG|CSS|ZIP|GZ|HTML|XML|BMP|SWF|FLV)$ /zend.php

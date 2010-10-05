@@ -1,0 +1,4 @@
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+	head~body div.all_site_box input{ border-width: 1px; }
+	head~body div.all_site_box textarea{ border-width: 1px; }
+}

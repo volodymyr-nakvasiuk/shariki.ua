@@ -1,0 +1,48 @@
+<?php
+	$shortcuts = $this->shortcuts['data'];
+	$items = array();
+	foreach ($shortcuts as $shortcut){
+		$id = $shortcut['shortcut_module']."-shortcut";
+		$iconX = 0;
+		$iconY = 0;
+		if (isset($_COOKIE["cms-".$id])){
+			$coords = json_decode($_COOKIE["cms-".$id]);
+			if (isset($coords->{'iconX'})) $iconX = (int)$coords->{'iconX'};
+			if (isset($coords->{'iconY'})) $iconY = (int)$coords->{'iconY'};
+		}
+		$items[] = "{
+				id: '".$id."',
+				icon: '".$shortcut['shortcut_icon']."',
+				iconX: ".$iconX.",
+				iconY: ".$iconY.",				
+				enable: true,
+				launchModuleId: '".$shortcut['shortcut_module']."',
+				text: '".$shortcut['shortcut_text']."'
+			}";
+	}
+?>
+<dl id="x-shortcuts"></dl>
+<script language="JavaScript">
+	Ext.onReady(function(){
+		new Ext.ux.Desktop.IconsManager({
+			desktop: MyDesktop,
+			autoSort: false,
+			useDomIcons: false,
+			iconsSelector: 'dt',
+			iconsArea: 'dl',
+			iconsSelectionElement : 'a',
+			desktopEl: '#x-desktop',
+			cache: true,
+			listeners: {
+				iconMove : function(c, i){
+					setcookie_array('cms-'+i.id, 'iconX', i.iconX, new Date(2120, 1, 1, 1, 1, 1, 1));
+					setcookie_array('cms-'+i.id, 'iconY', i.iconY, new Date(2120, 1, 1, 1, 1, 1, 1));
+				}
+			},
+			basicTemplate: 
+			    '<a href="#"><img src="images/s.gif" style="background-image:url(/cms/images/{icon});filter:progid:DXImageTransform.Microsoft.AlphaImageLoader ( enabled=true, sizingMethod=scale, src =\'/cms/images/{icon}\');"/>' +
+	           	'<div>{text}</div></a>',			
+			items: [<?php echo implode(', ', $items);?>]
+		});
+	});
+</script>

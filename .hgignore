@@ -1,0 +1,17 @@
+
+syntax: regexp
+^data/cache$
+syntax: regexp
+^shariki\.ua/uploads$
+syntax: regexp
+^shariki\.ua/cache$
+syntax: regexp
+^.buildpath$
+syntax: regexp
+^.project$
+syntax: regexp
+^.settings$
+syntax: regexp
+^access\.log$
+syntax: regexp
+^error\.log$

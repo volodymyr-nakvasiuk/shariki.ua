@@ -1,0 +1,36 @@
+<?php
+	$sha = md5(microtime().rand(0,1000));
+?>
+<div class="site_info_block" id="site_info_block_<?php echo $sha;?>"></div>
+<div class="site_info_block" id="site_info_block_h_<?php echo $sha;?>">
+	<?php echo $this->seo_text;?>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var infoBlockH = $("#site_info_block_h_<?php echo $sha;?>");
+		var infoBlock = $("#site_info_block_<?php echo $sha;?>");
+		infoBlockH.children(".cut").appendTo(infoBlock);
+		var height_h = infoBlock.height();
+		infoBlockH.children().appendTo(infoBlock);
+		infoBlockH.remove();
+		var height = infoBlock.height();
+		infoBlock.css("height", height_h+'px');
+		if (height != height_h){
+			infoBlock.after(
+							'<div class="site_info_block_text_link" '+
+								'onclick="javascript:'+
+									'var d=$(\'#site_info_block_<?php echo $sha;?>\');'+
+									'if(d.height()=='+height_h+'){'+
+										'd.animate({height:'+height+'+\'px\'},\'slow\');'+
+										'$(this).html(\'<span>Скрыть текст <<<</span>\');'+
+									'}'+
+									'else{'+
+										'd.animate({height:\''+height_h+'px\'},\'slow\');'+
+										'$(this).html(\'<span>Читать далее >>></span>\');'+
+									'}'+
+								'"'+
+							'><span>Читать далее >>></span></div>'
+				);
+		}
+	});
+</script>

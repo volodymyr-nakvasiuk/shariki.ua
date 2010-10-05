@@ -1,0 +1,9 @@
+<table width="100%" height="55px" cellpadding="5" cellspacing="0" border="0" class="menu_main" id="menu_main">
+	<tr>
+		<?php foreach($this->menuLinks as $menuId=>$menu){?>
+			<td valign="middle" align="center"<?php echo ($menuId == $this->activeMenu)?' class="active"':'';?>>
+				<a href="<?php echo $menu['url']?>"><?php echo $menu['title']?></a>
+			</td>
+		<?php }?>
+	</tr>
+</table>

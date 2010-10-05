@@ -1,0 +1,26 @@
+div.team_content_item {
+	clear: none;
+	float: left;
+	width: 240px;
+	margin: 0 25px 30px;
+}
+div.team_content_photo {
+	clear: both;
+	float: none;
+	width: 240px;
+	height: 180px;
+}
+div.team_content_name {
+	clear: both;
+	float: none;
+	color: #e1418c;
+	font-size: 14px;
+	margin-top: 20px;
+	text-align: center;
+}
+div.team_content_text {
+	clear: both;
+	float: none;
+	margin-top: 10px;
+	text-align: center;
+}

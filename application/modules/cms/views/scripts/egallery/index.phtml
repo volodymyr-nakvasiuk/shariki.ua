@@ -1,0 +1,265 @@
+<script type="text/javascript">
+crud.mygallery = function() {
+	
+	var store = new Ext.data.Store({
+		url: '/cms/egallery/getphotos',
+		id: 'gallery-store',
+		remoteSort: true,
+		//autoLoad: true,
+		reader: new Ext.data.JsonReader({
+			root:'rows',
+			totalProperty: 'results',
+			idProperty:'photos_id'
+		}, [
+			{name: 'photos_id', type: 'int'},
+			{name: 'photos_path', type: 'string'},
+			{name: 'photos_title', type: 'string'},
+			{name: 'photos_main', type: 'int'},
+			{name: 'photos_order', type: 'int'},
+			{name: 'photos_visible', type: 'int'}
+		])
+	});
+
+	var createmulti = function () {
+		var node = store.baseParams.node;
+		if(node != 'undefined' && node != null) {
+			Ext.get('loader').load({
+				waitMsg:'Загрузка...',
+				url:'/cms/egallery/createmulti',
+				scripts:true,
+				discardUrl: true,
+				nocache: true,
+				timeout: 5,
+				params: {'node': node}
+			});
+		} else {
+			Ext.MessageBox.alert('Информация', 'Выберите поколение');
+		}
+	}
+	
+	var create = function () {
+		var node = store.baseParams.node;
+		if(node != 'undefined' && node != null) {
+			Ext.get('loader').load({
+				waitMsg:'Загрузка...',
+				url:'/cms/egallery/create',
+				scripts:true,
+				discardUrl: true,
+				nocache: true,
+				timeout: 5,
+				params: {'node': node}
+			});
+		} else {
+			Ext.MessageBox.alert('Информация', 'Выберите поколение');
+		}
+	}
+
+	var remove = function () {
+		var m = grid.getSelectionModel().getSelections();
+		if(m.length > 0) {
+			Ext.MessageBox.confirm('Информация', 'Вы действительно хотите удалить выбранные фото?' , function (btn) {
+				if(btn == 'yes') {
+					var jsonData = '[';
+					for(var i = 0, len = m.length; i < len; i++) {
+						var ss = '"' + m[i].id + '"';
+						if(i==0) {
+							jsonData = jsonData + ss;
+						} else {
+							jsonData = jsonData + ',' + ss;
+						}
+					}
+					jsonData = jsonData + ']';
+					Ext.Ajax.request({
+						url: '/cms/egallery/remove',
+						success: function(form, action) {
+							var response = eval('(' + form.responseText + ')');
+							if (response.success == false){
+								var err = '<b>Невозможно получить данные!</b><hr />Возможно на стороне сервера произошла ошибка либо Вы неавторизированы.';
+								if (response.errorMessage) err = "<b>Ответ от сервера:</b><hr />" + response.errorMessage;
+								else if (response.message) err = '<b>Ответ от сервера:</b><hr />' + response.message;
+								Ext.MessageBox.alert('Ошибка', err);
+							} else {
+								grid.getSelectionModel().each(function(){
+									store.remove(this.getSelected());
+								});
+								//Ext.MessageBox.alert('Информация', response.message);
+							}
+						},
+						failure: function(form, action) {
+							Ext.MessageBox.alert('Ошибка', 'На сервере произошла ошибка, либо сервер недоступен');
+						},
+						params: {
+							'ids':jsonData
+						}
+					});
+				}
+			});
+		} else {
+			Ext.MessageBox.alert('Информация', 'Выберите фото');
+		}
+	};
+
+	var refresh = function () {
+		var node = store.baseParams.node;
+		if(node != 'undefined' && node != null) {
+			store.reload();
+		}
+	}
+
+	function image_render(val){
+		return '<img src=/catalog/images/generations/'+val+' style="width: 100px"/>';
+	}
+
+	function ph_main_render(val, metadata, record){
+		var checked = '';
+		if (val>0){
+			checked = ' checked="checked" ';
+		}
+		return '<input type="radio" name="main_photo"'+checked+'onclick="javascript:Ext.Ajax.request({url: \'/cms/egallery/setvalue\',params: {\'id\':'+record.id+', \'name\' : \'photos_main\', \'value\': \'1\'}});">';
+	}
+
+	function ph_visible_render(val, metadata, record){
+		var checked = '';
+		if (val>0){
+			checked = ' checked="checked" ';
+		}
+		return '<input type="checkbox" name="visible_photo"'+checked+'onclick="javascript:if(this.checked){var val = 1;}else{var val = 0;} Ext.Ajax.request({url: \'/cms/egallery/setvalue\',params: {\'id\':'+record.id+', \'name\' : \'photos_visible\', \'value\': val}});">';
+	}
+
+	var grid = new Ext.grid.EditorGridPanel({
+		region: 'center',
+		selModel: new Ext.grid.RowSelectionModel(),
+        store: store,
+        columns: [
+			{header: "Фото",             dataIndex: 'photos_path',    sortable: false, width: 110, renderer: image_render},
+			{header: "Подпись",          dataIndex: 'photos_title',   sortable: false, width: 100, editor: new Ext.form.TextField({allowBlank: false})},
+			{header: "Сортировка",       dataIndex: 'photos_order',   sortable: false, width: 50,  editor: new Ext.form.NumberField({allowBlank: false})},
+			{header: "Главная",          dataIndex: 'photos_main',    sortable: false, width: 50, renderer: ph_main_render},
+			{header: "Видимая",          dataIndex: 'photos_visible', sortable: false, width: 50, renderer: ph_visible_render}
+        ],
+        viewConfig: {
+            forceFit: true
+        },
+        /*
+        bbar: new Ext.PagingToolbar({
+        	pageSize: 20,
+        	store: store,
+        	displayInfo:true,
+        	displayMsg:'Отображаются записи {0} - {1} из {2}',
+        	emptyMsg:'Нет записей для отображения'
+        }),
+        */
+        tbar:[{
+    		text:'Добавить',
+    		tooltip:'Добавить новое фото',
+    		iconCls:'create',
+    		handler:create
+    	}, '-', {
+    		text:'Пакет',
+    		tooltip:'Пакетная загрузка фото',
+    		iconCls:'createmulti',
+    		handler:createmulti
+    	}, '-', {
+    		text:'Удалить',
+    		tooltip:'Удалить выделенные фото',
+    		iconCls:'remove',
+    		handler:remove
+    	}, '-', {
+    		text:'Обновить',
+    		tooltip:'Обновить список фото',
+    		iconCls:'refresh',
+    		handler: refresh
+    	}],
+        height:550
+    });
+	grid.on('afteredit', function(obj){
+		Ext.Ajax.request({
+			url: '/cms/egallery/setvalue',
+			params: {
+				'id'   : obj.record.id,
+				'name' : obj.field,
+				'value': obj.value
+			}
+		});
+	});
+	
+    var tree = new Ext.tree.TreePanel({
+    	region: 'west',
+    	split: true,
+    	//collapsible:true,
+    	//title: 'Navigation',
+        useArrows: true,
+        autoScroll: true,
+        animate: true,
+        containerScroll: true,
+        border: false,
+        width: 200,
+        // auto create TreeLoader
+        dataUrl: '/cms/egallery/tree',
+
+        root: {
+            nodeType: 'async',
+            text: 'Картотека',
+            draggable: false,
+            id: 'src'
+        },
+        tbar:[{
+    		text:'Обновить',
+    		tooltip:'Обновить дерево каталога',
+    		iconCls:'refresh',
+    		handler: function (){
+    			tree.getLoader().load(tree.getRootNode(), function(){
+    				tree.getRootNode().expand();
+        		});
+    		}
+    	}]
+    });
+    tree.on('click', function (node, obj){
+        if (node.leaf){
+            store.baseParams['node'] = node.id;
+        	//store.load({params: {limit: 20, start:0}});
+        	store.load();
+        	var desktop = MyDesktop.getModule('grid-win-egallery').app.getDesktop();
+        	var win = desktop.getWindow('grid-win-egallery-multiphoto');
+        	if (win) {
+        		var bp = win.getBaseParams();
+        		var temp = node.id.split('_');
+				bp['generation'] = temp[1];
+				win.setBaseParams(bp);
+				win.show();
+        	}
+        }
+    });
+    tree.getRootNode().expand();
+    
+	
+	return {
+		init: function() {
+			var desktop = MyDesktop.getModule('grid-win-egallery').app.getDesktop();
+			var win = desktop.getWindow('grid-win-egallery');
+			if(!win){
+				win = desktop.createWindow({
+					id:'grid-win-egallery',
+					title:'Галерея',
+					width:700,
+					height:550,
+					minWidth:300,
+					minHeight:200,
+					iconCls:'bogus',
+					animCollapse:false,
+					constrainHeader:true,
+    				shim:false,
+					items: [grid, tree],
+					forceLayout: true,
+					layout: 'border'
+				});
+			}
+			Ext.get('loading').hide();
+			win.show();
+		}
+	};
+}();
+
+Ext.onReady(crud.mygallery.init, crud.mygallery);
+
+</script>

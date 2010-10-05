@@ -1,0 +1,31 @@
+<?php 
+foreach ($this->container as $page) {
+	//var_dump($page);
+    //echo $this->menu()->htmlify($page), PHP_EOL;
+    
+	$label = $page->getLabel();
+        $title = $page->getTitle();
+       
+
+        // get attribs for element
+        $attribs = array(
+            'id'     => $page->getId(),
+            'title'  => $title,
+            'class'  => $page->getClass()
+        );
+
+        // does page have a href?
+        if ($href = $page->getHref()) {
+            $element = 'a';
+            $attribs['href'] = $href;
+            $attribs['target'] = $page->getTarget();
+        } else {
+            $element = 'span';
+        }
+
+       echo '<' . $element . ' href=' . $href . '>'
+             . $this->escape($label)
+             . '</' . $element . '>';
+}
+
+?>

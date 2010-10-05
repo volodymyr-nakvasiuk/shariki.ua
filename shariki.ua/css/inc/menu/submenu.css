@@ -1,0 +1,11 @@
+div.left_menu p {
+	margin-bottom:20px;
+}
+div.left_menu p a{
+	color: #2d002d;
+	text-decoration: underline;
+	font-size: 14px;
+}
+div.left_menu p a:HOVER{
+	text-decoration: none;
+}

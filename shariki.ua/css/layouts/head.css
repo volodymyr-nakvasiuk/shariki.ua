@@ -1,0 +1,12 @@
+div.header_logo_box {
+	width: 343px;
+	height: 68px;
+	margin: 47px 0 0 100px;
+	float:left;
+	clear: none;
+}
+div.header_contacts_box {
+	margin: 0 100px 0 0;
+	float:right;
+	clear: none;
+}

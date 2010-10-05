@@ -1,0 +1,16 @@
+Zend_Form - protected $_translatorDisabled = true;
+Zend_Form_Element - protected $_translatorDisabled = true;
+Zend_Validate_Abstract - protected $_translatorDisabled = true;
+Zend_Form_Element_Multi - change addMultiOption
+
+Zend_Db_Select - public function __construct($adapter)
+
+Zend_Feed_Rss - changed - public function saveXml()
+Zend_Feed_Rss - changed - protected function _mapFeedHeaders($array)
+Zend_Feed_Rss - added   - protected $_setAtom = false;
+
+Zend_Feed_Rss - changed - protected function _mapFeedEntries(DOMElement $root, $array)), add new column <full-text>
+Zend_Feed_Builder - changed - private function _createEntries(array $data)
+Zend_Feed_Builder_Entry - changed - public function __construct($title, $link, $description, $text), add $this->offsetSet('text', $text);
+
+

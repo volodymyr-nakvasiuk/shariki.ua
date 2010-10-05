@@ -1,0 +1,19 @@
+div.header_contacts_icons {
+	clear:both;
+	float:none;
+}
+div.header_contacts_icons img{
+	clear:none;
+	float:right;
+	margin-left: 10px;
+}
+div.header_contacts_content {
+	clear:both;
+	float:none;
+	text-align: right;
+	font-size: 14px;
+	margin-top: 20px;
+}
+div.header_contacts_content p {
+	margin-top: 3px;
+}

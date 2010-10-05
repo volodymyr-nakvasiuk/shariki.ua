@@ -1,0 +1,23 @@
+<?php
+	$data = false;
+	foreach($this->data as $submenu){
+		if ($submenu['services_id'] == $this->selectedId){
+			$data = $submenu;
+			break;
+		}
+	}
+	if (!$data) $data = $this->data[0];
+?>
+<div class="services_content">
+	<h3><?php echo $data['services_title'];?></h3>
+	<table cellspacing="0" cellpadding="0" border="0" width="100%" class="services_content">
+		<tr>
+			<td align="left" valign="top">
+				<?php echo $data['services_text'];?>
+			</td>
+			<td align="right" valign="top">
+				<img class="services_photo" alt="<?php echo $data['services_title'];?>" src="/uploads/images/services/<?php echo $data['services_id'].'/middle/'.$data['services_photo'];?>"/>
+			</td>
+		</tr>
+	</table>
+</div>

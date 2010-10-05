@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Shariki.UA - Администрирование</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en-US" />
+<!--[if IE]>
+<style type="text/css"> 
+.x-form-field {vertical-align: baseline;}
+</style>
+<![endif]-->
+<?php echo  $this->headTitle() ?>
+<?php echo $this->headLink() ?>
+
+<?php echo $this->headScript() ?>
+<?php echo $this->headMeta() ?>
+</head>
+<body scroll="no">
+<div class="admin_body_box">
+<div id="loader" style="display: none;"></div>
+
+<div id="loading">
+<div class="loading-indicator"></div>
+
+</div>
+
+<div id="x-desktop"><?php echo $this->render("index/desktop.phtml");?></div>
+
+<div id="ux-taskbar">
+<div id="ux-taskbar-start"></div>
+<div id="ux-taskbuttons-panel"></div>
+<div class="x-clear"></div>
+</div>
+</div>
+<script type="text/javascript">
+Ext.onReady(function() {
+	Ext.get('loading').hide();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<script type="text/javascript">
+crud.imagechoose = function() {
+	var lookup = {};
+
+	var formatSize = function(data){
+        if(data.size < 1024) {
+            return data.size + " bytes";
+        } else {
+            return (Math.round(((data.size*10) / 1024))/10) + " KB";
+        }
+    };
+
+    String.prototype.ellipse = function(maxLength){
+        if(this.length > maxLength){
+            return this.substr(0, maxLength-3) + '...';
+        }
+        return this;
+    };
+
+	var formatData = function(data){
+    	data.shortName = data.name.ellipse(15);
+    	data.sizeString = formatSize(data);
+    	data.dateString = new Date(data.lastmod).format("m/d/Y g:i a");
+    	lookup[data.name] = data;
+    	return data;
+    };
+
+    var thumbTemplate = new Ext.XTemplate(
+		'<tpl for=".">',
+			'<div class="thumb-wrap" id="{name}">',
+			'<div class="thumb"><img src="{url}" title="{name}"></div>',
+			'<span>{shortName}</span></div>',
+		'</tpl>'
+	);
+	thumbTemplate.compile();
+
+	var detailsTemplate = new Ext.XTemplate(
+		'<div class="details">',
+			'<tpl for=".">',
+				'<img src="{url}"><div class="details-info">',
+				'<b>Image Name:</b>',
+				'<span>{name}</span>',
+				'<b>Size:</b>',
+				'<span>{sizeString}</span>',
+				'<b>Last Modified:</b>',
+				'<span>{dateString}</span></div>',
+			'</tpl>',
+		'</div>'
+	);
+	detailsTemplate.compile();
+
+	var store = new Ext.data.JsonStore({
+	    url: '/cms/browse/getphotos',
+	    root: 'rows',
+	    fields: [
+	        'name', 'url',
+	        {name:'size', type: 'float'},
+	        {name:'lastmod', type:'date', dateFormat:'timestamp'}
+	    ],
+	    listeners: {
+	    	'load': {fn:function(){ view.select(0);}}
+	    }
+	});
+	store.baseParams['node'] = '<?php echo $_REQUEST['dir']?>';
+	store.load();
+
+	var showDetails = function(){
+	    var selNode = view.getSelectedNodes();
+	    var detailEl = Ext.getCmp('img-detail-panel').body;
+		if(selNode && selNode.length > 0){
+			selNode = selNode[0];
+			Ext.getCmp('ok-btn').enable();
+		    var data = lookup[selNode.id];
+            detailEl.hide();
+            detailsTemplate.overwrite(detailEl, data);
+            detailEl.slideIn('l', {stopFx:true,duration:.2});
+		}else{
+		    Ext.getCmp('ok-btn').disable();
+		    detailEl.update('');
+		}
+	};
+
+	var view = new Ext.DataView({
+		tpl: thumbTemplate,
+		singleSelect: true,
+		overClass:'x-view-over',
+		itemSelector: 'div.thumb-wrap',
+		emptyText : '<div style="padding:10px;">Нет фото для просмотра</div>',
+		store: store,
+		listeners: {
+			'selectionchange': {fn:showDetails, scope:this, buffer:100},
+			'beforeselect'   : {fn:function(view){
+		        return view.store.getRange().length > 0;
+		    }}
+		},
+		prepareData: formatData.createDelegate(this)
+	});
+
+	var callback = function(data){
+		el = Ext.getCmp('<?php echo $_REQUEST['id']?>');
+		if(el){
+	        if(Ext.isIE) el.editor.doc.selection.createRange().select();
+	        el.relayCmd('insertimage', data.url);
+		}
+	};
+
+	var doCallback = function(){
+        var selNode = view.getSelectedNodes()[0];
+        if(selNode){
+			var data = lookup[selNode.id];
+			callback(data);
+		}
+        MyDesktop.getModule('grid-win-egallery').app.getDesktop().getWindow('grid-win-browse').close();
+    };
+
+	 var  chooser = new Ext.Panel({
+			region: 'center',
+	    	title: 'Выберите фото',
+	    	id: 'img-chooser-dlg',
+	    	layout: 'border',
+			minWidth: 500,
+			minHeight: 300,
+			modal: true,
+			closeAction: 'hide',
+			border: false,
+			items:[{
+				id: 'img-chooser-view',
+				region: 'center',
+				autoScroll: true,
+				items: view
+			},{
+				id: 'img-detail-panel',
+				region: 'east',
+				split: true,
+				width: 200,
+				minWidth: 200,
+				maxWidth: 200
+			}],
+			buttons: [{
+				id: 'ok-btn',
+				text: 'OK',
+				handler: doCallback,
+				scope: this
+			},{
+				text: 'Отмена',
+				handler: function(){
+	 				MyDesktop.getModule('grid-win-egallery').app.getDesktop().getWindow('grid-win-browse').close();
+				},
+				scope: this
+			}],
+			keys: {
+				key: 27, // Esc key
+				handler: function(){
+		 			MyDesktop.getModule('grid-win-egallery').app.getDesktop().getWindow('grid-win-browse').close();
+				},
+				scope: this
+			}
+		});
+
+    var tree = new Ext.tree.TreePanel({
+    	region: 'west',
+    	split: true,
+    	//collapsible:true,
+    	//title: 'Navigation',
+        useArrows: true,
+        autoScroll: true,
+        animate: true,
+        containerScroll: true,
+        border: false,
+        width: 200,
+        // auto create TreeLoader
+        dataUrl: '/cms/browse/tree',
+
+        root: {
+            nodeType: 'async',
+            text: '/',
+            draggable: false,
+            id: '<?php echo $_REQUEST['dir']?>'
+        },
+        tbar:[{
+    		text:'Обновить',
+    		tooltip:'Обновить дерево каталога',
+    		iconCls:'refresh',
+    		handler: function (){
+    			tree.getLoader().load(tree.getRootNode(), function(){
+    				tree.getRootNode().expand();
+        		});
+    		}
+    	}]
+    });
+    tree.on('click', function (node, obj){
+            store.baseParams['node'] = node.id;
+        	store.load();
+    });
+    tree.getRootNode().expand();
+    
+	
+	return {
+		init: function() {
+			var desktop = MyDesktop.getModule('grid-win-egallery').app.getDesktop();
+			var win = desktop.getWindow('grid-win-browse');
+			if(!win){
+				win = desktop.createWindow({
+					id:'grid-win-browse',
+					title:'Галерея',
+					width:700,
+					height:550,
+					minWidth:300,
+					minHeight:200,
+					iconCls:'bogus',
+					animCollapse:false,
+					constrainHeader:true,
+    				shim:false,
+					items: [chooser, tree],
+					forceLayout: true,
+					layout: 'border'
+				});
+			}
+			Ext.get('loading').hide();
+			win.show();
+		}
+	};
+}();
+
+Ext.onReady(crud.imagechoose.init, crud.imagechoose);
+
+</script>

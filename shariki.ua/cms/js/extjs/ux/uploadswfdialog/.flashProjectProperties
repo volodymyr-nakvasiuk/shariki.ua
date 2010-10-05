@@ -1,0 +1,22 @@
+<projectDescription>
+  <id>1260887510187</id>
+  <name>uploadswfdialog</name>
+  <asVersion>0</asVersion>
+  <boundTemplate>file:///C|/Documents and Settings/Admin/Local Settings/Application Data/Adobe/Flash CS4/en/Configuration/Project/templates/boundClass_as3.as</boundTemplate>
+  <classTemplate>file:///C|/Documents and Settings/Admin/Local Settings/Application Data/Adobe/Flash CS4/en/Configuration/Project/templates/standardClass_as3.as</classTemplate>
+  <classPath>.</classPath>
+  <defaultApp>file:///C|/WebServers/home/car-my.ua/www/cms/js/extjs/ux/uploadswfdialog/uploadswfdialog.fla</defaultApp>
+  <rootURI>file:///C|/WebServers/home/car-my.ua/www/cms/js/extjs/ux/uploadswfdialog/</rootURI>
+  <flexSDK/>
+  <sources editable="false"/>
+  <libraries editable="false"/>
+  <externalLibraries editable="false"/>
+  <compileList editable="false">
+    <uri label="uploadswfdialog.fla">file:///C|/WebServers/home/car-my.ua/www/cms/js/extjs/ux/uploadswfdialog/uploadswfdialog.fla</uri>
+  </compileList>
+  <recentFiles editable="false">
+    <uri label="UploadSwfDialog.as">file:///C|/WebServers/home/car-my.ua/www/cms/js/extjs/ux/uploadswfdialog/UploadSwfDialog.as</uri>
+    <uri label="uploadswfdialog.fla">file:///C|/WebServers/home/car-my.ua/www/cms/js/extjs/ux/uploadswfdialog/uploadswfdialog.fla</uri>
+  </recentFiles>
+  <locations editable="false"/>
+</projectDescription>

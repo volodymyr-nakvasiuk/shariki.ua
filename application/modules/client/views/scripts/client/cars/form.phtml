@@ -1,0 +1,269 @@
+<form>
+	<div class="form_content">
+		<input type="hidden" name="id" value="${id}" />
+		<ul>
+			<li>
+				<a href="#client_edit_car_profile_${id}">
+					<div class="rc_t"><div class="rc_r"><div class="rc_l">
+					<div class="rc_tl"><div class="rc_tr tab_label">
+						Характеристики
+						<div class="clear"></div>
+					</div></div>
+					</div></div></div>
+				</a>
+			</li>
+			<li>
+				<a href="#client_edit_car_photos_${id}">
+					<div class="rc_t"><div class="rc_r"><div class="rc_l">
+					<div class="rc_tl"><div class="rc_tr tab_label">
+						Фото
+						<div class="clear"></div>
+					</div></div>
+					</div></div></div>
+				</a>
+			</li>
+		</ul>
+		<div class="form_close">закрыть</div>
+		<div id="client_edit_car_profile_${id}">
+			<div class="panel">
+				<div class="columnLeft">
+					<div class="row">
+						<div class="label">Марка<sup>*</sup></div>
+						<div class="field">
+							<select name="mark" id="price_mark_id_${id}">
+								<?php
+									echo "<option value=\"\">Выберите марку</option>";
+									echo "<optgroup label=\"Популярные\">";
+									$flag = false;
+									foreach($this->mark_caches as $opt_id => $opt_val){
+										if(!$opt_val['mark_priority'] && !$flag){
+											echo "</optgroup><optgroup label=\"Другие\">";
+											$flag = true;
+										}
+										echo "<option value=\"".$opt_id."\"\${mark:condition(\" selected\",\"\",function(a){return a==".$opt_id.";})}>".$opt_val['mark_name']."</option>";
+									}
+									if($flag) echo "</optgroup>";
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Модель<sup>*</sup></div>
+						<div class="field">
+							<select name="model" id="price_model_id_${id}" model="${model}">
+								<option value="">Выберите модель</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Дополнительно о модели</div>
+						<div class="field">
+							<input type="text" name="article" value="${article}" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Год выпуска<sup>*</sup></div>
+						<div class="field">
+							<input type="text" name="year" value="${year}" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Пробег<sup>*</sup></div>
+						<div class="field">
+							<input type="text" name="mileage" value="${mileage}" class="w_84" />
+							<span class="sub">&nbsp;(тыс.км)</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Цена<sup>*</sup></div>
+						<div class="field">
+							<input type="text" name="value" value="${value}" class="w_84" />
+							<select name="currency" class="w_84 m_left2 sub">
+								<?php
+									foreach($this->currency as $opt_id => $opt_val){
+										echo "<option value=\"".$opt_id."\"\${currency:condition(\" selected\",\"\",function(a){return a==".$opt_id.";})}>".$opt_val."</option>";
+									}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Область<sup>*</sup></div>
+						<div class="field">
+							<select name="region">
+								<option value="">Выберите область</option>
+								<?php
+									foreach($this->regions as $opt_id => $opt_val){
+										echo "<option value=\"".$opt_id."\"\${region:condition(\" selected\",\"\",function(a){return a==".$opt_id.";})}>".$opt_val."</option>";
+									}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Населенный пункт</div>
+						<div class="field">
+							<input type="text" name="place" value="${place}" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Объем двигателя</div>
+						<div class="field">
+							<input type="text" name="engine" value="${engine}" class="w_84" />
+							<span class="sub">&nbsp;(л)</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Об автомобиле</div>
+						<div class="field">
+							<textarea name="features" cols="22" rows="7">${features}</textarea>
+						</div>
+					</div>
+				</div>
+				<div class="columnRight">
+					<h5>Параметры:</h5>
+					<div class="row">
+						<div class="label">Тип коробки передач</div>
+						<div class="field">
+							<select name="transmission">
+								<option value="0">-</option>
+								<?php
+									foreach($this->transmissions as $opt_id => $opt_val){
+										echo "<option value=\"".$opt_id."\"\${transmission:condition(\" selected\",\"\",function(a){return a==".$opt_id.";})}>".$opt_val."</option>";
+									}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Количество дверей</div>
+						<div class="field">
+							<select name="doors">
+								<option value="0">-</option>
+								<?php
+									for($opt_id=2;$opt_id<=6;$opt_id++){
+										echo "<option value=\"".$opt_id."\"\${doors:condition(\" selected\",\"\",function(a){return a==".$opt_id.";})}>".$opt_id."</option>";
+									}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Тип топлива</div>
+						<div class="field">
+							<select name="fuel">
+								<option value="0">-</option>
+								<?php
+									foreach($this->fuel as $opt_id => $opt_val){
+										echo "<option value=\"".$opt_id."\"\${fuel:condition(\" selected\",\"\",function(a){return a==".$opt_id.";})}>".$opt_val."</option>";
+									}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Тип кузова</div>
+						<div class="field">
+							<select name="body">
+								<option value="0">-</option>
+								<?php
+									foreach($this->body_type as $opt_id => $opt_val){
+										echo "<option value=\"".$opt_id."\"\${body:condition(\" selected\",\"\",function(a){return a==".$opt_id.";})}>".$opt_val."</option>";
+									}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Привод</div>
+						<div class="field">
+							<select name="drive">
+								<option value="0">-</option>
+								<?php
+									foreach($this->drive as $opt_id => $opt_val){
+										echo "<option value=\"".$opt_id."\"\${drive:condition(\" selected\",\"\",function(a){return a==".$opt_id.";})}>".$opt_val."</option>";
+									}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="label">Цвет</div>
+						<div class="field">
+							<select name="color">
+								<option value="0">-</option>
+								<?php
+									foreach($this->colors as $opt_id => $opt_val){
+										echo "<option value=\"".$opt_id."\"\${color:condition(\" selected\",\"\",function(a){return a==".$opt_id.";})}>".$opt_val."</option>";
+									}
+								?>
+							</select>
+						</div>
+					</div>
+					<h5 style="margin-top:10px;">Дополнительно:</h5>
+					<div class="row_chbx">
+						<div class="label">Не растаможена</div>
+						<div class="field">
+							<input type="checkbox" name="customs"${customs:condition(" checked","")} />
+						</div>
+					</div>
+					<div class="row_chbx">
+						<div class="label">Возможен обмен</div>
+						<div class="field">
+							<input type="checkbox" name="exchange"${exchange:condition(" checked","")} />
+						</div>
+					</div>
+					<div class="row_chbx">
+						<div class="label">На запчасти</div>
+						<div class="field">
+							<input type="checkbox" name="for_spaces"${for_spaces:condition(" checked","")} />
+						</div>
+					</div>
+					<div class="row_chbx">
+						<div class="label">После ДТП</div>
+						<div class="field">
+							<input type="checkbox" name="accident"${accident:condition(" checked","")} />
+						</div>
+					</div>
+					<div class="row_chbx">
+						<div class="label">В кредите</div>
+						<div class="field">
+							<input type="checkbox" name="credit"${credit:condition(" checked","")} />
+						</div>
+					</div>
+					<div class="row_chbx">
+						<div class="label">Тюнинг</div>
+						<div class="field">
+							<input type="checkbox" name="tuning"${tuning:condition(" checked","")} />
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="submit">
+				<input type="submit" class="save" name="" value="" />
+			</div>
+		</div>
+		<div id="client_edit_car_photos_${id}">
+				<div class="photoAdd">
+					<h5 class="tx_left">
+						Добавить фото:
+						<?php /*' <a href="" class="link">из картотеки car.ua</a>*/?>
+					</h5>
+					<div class="m_top15 car_swf_upload">
+						<div class="swf_label" id="swf_input_${id}">
+							с компьютера
+						</div>
+						<div class="swf_button">
+							<span id="swf_button_span_${id}"></span>
+						</div>
+						<div class="swf_upload_process_box" id="swf_upload_process_box_${id}"></div>
+						<input type="button" style="display:none;" disabled="disabled" value="Cancel" id="btnCancel_${id}">
+					</div>
+				</div>
+				<div class="photoPrev">
+				</div>
+				<div class="clear"></div>
+		</div>
+	</div>
+</form>

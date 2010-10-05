@@ -1,0 +1,52 @@
+<?php
+	$userData = $this->userData['user'];
+?>
+<div class="AccountForm">
+	<div class="label inner_label"><a href="#home">Мой кабинет</a> &rarr; Личные данные</div>
+	<div class="rc_t inner_box"><div class="rc_r"><div class="rc_b"><div class="rc_l">
+	<div class="rc_tl"><div class="rc_tr"><div class="rc_br"><div class="rc_bl">
+	<div class="user_content">
+		<div class="infoBox">
+			<div><span>Внимание! Внесенные изменения будут отображаться на всех Ваших объявлениях.</span></div>
+		</div>
+		<div class="clear"></div>
+<?php /*		<h3>Личные данные:</h3>*/?>
+		<a href="#pass">Изменить пароль</a>
+		<div class="UserForm">
+			<form action="/client/form/profile/save/" method="post" id="clientProfileForm">
+				<input type="hidden" name="id" value="<?php echo $userData['id'];?>" />
+				<div class="column">
+					<div>
+						<p>Имя владельца <i>*</i></p>
+						<input type="text" name="name" value="<?php echo $userData['name'];?>" />
+					</div>
+					<div>
+						<p>Телефоны <i>*</i></p>
+						<input id="number" type="hidden" name="number" value="<?php echo $userData['tel'];?>" />
+						<div class="add"><span>Добавить еще телефон</span></div>
+					</div>
+					<div>
+						<p>Пароль, для подтверждения изменений <i>*</i></p>
+						<input id="password" type="password" name="password" value="" />
+					</div>
+					<div id="showPass" status="0">Показать пароль</div>
+				</div>
+				<div class="column">
+					<div>
+						<p>Дополнительно о продавце</p>
+						<textarea name="info" cols="28" rows="9"><?php echo $userData['info'];?></textarea>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div id="submitStatusBox" class="statusBox"></div>
+				<div class="clear"></div>
+				<div class="submit">
+					<input type="submit" class="save" name="" value="" />
+				</div>
+			</form>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div></div></div></div>
+	</div></div></div></div>
+</div>

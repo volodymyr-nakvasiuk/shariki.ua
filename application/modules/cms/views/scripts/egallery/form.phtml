@@ -1,0 +1,276 @@
+<?php
+	foreach ($this->data as &$val){
+		$val = addslashes($val);
+	}
+	
+	$year_beg = 9999;
+	$year_end = 0;
+	foreach ($this->articles as $article){
+		$y = (int)$article['article_year_beg'];
+		if ($y && $y<$year_beg) $year_beg = $y;
+		$y = (int)$article['article_year_end'];
+		if ($y>$year_end) $year_end = $y;
+	}
+	if ($year_beg == 9999) $year_beg = 0;
+?>
+<script type="text/javascript">
+	crud.myform = function() {
+		var tree = new Ext.tree.TreePanel({
+	    	region: 'west',
+	    	split: true,
+	    	//collapsible:true,
+	    	//title: 'Navigation',
+	        useArrows: true,
+	        autoScroll: true,
+	        animate: true,
+	        containerScroll: true,
+	        border: false,
+	        width: 300,
+	        // auto create TreeLoader
+	        dataUrl: '/cms/form/egallery/edit',
+
+	        root: {
+	            nodeType: 'async',
+	            text: 'Галерея',
+	            draggable: false,
+	            id: 'p'
+	        },
+	        tbar:[{
+	    		text:'Обновить',
+	    		tooltip:'Обновить дерево каталога',
+	    		iconCls:'refresh',
+	    		handler: function (){
+	    			tree.getLoader().load(tree.getRootNode(), function(){
+	    				tree.getRootNode().expand();
+	        		});
+	    		}
+	    	}]
+	    });
+		tree.on('click', function (node, obj){
+            var form = formPanel_egallery_center.getForm();
+        	var image = form.items.get('egallery-photos_name-id-0');
+        	var store = image.getStore();
+        	store.baseParams = store.baseParams || {};
+        	store.baseParams['tree_val'] = node.id;
+        	store.load({
+	                callback: function(){
+	        			this.renderValues();
+	            	},
+	            	scope: image
+        	});
+        	image.clearValue();
+	    });
+	    tree.getRootNode().expand();
+		
+		var formPanel_egallery_center = new Ext.FormPanel({
+				title:'',
+				region: 'center',
+		    	labelWidth: 150,
+		    	id: 'form-egallery-<?php echo $this->data['id']?>',
+		    	name: 'form-egallery-<?php echo $this->data['id']?>',
+		    	frame: true,
+		    	autoScroll: true,
+		    	bodyStyle:'padding:5px 5px 0',
+		    	border:false,
+				fileUpload: false, // If you want to upload files
+				items: [
+					new Ext.form.TextField({
+			    		fieldLabel: 'Марка',
+			    		boxLabel: '',
+			            allowBlank: 'false',
+			            value: '<?php echo $this->data['mark'];?>',
+			            disabled: true,
+			            width: 400
+					}),
+					 new Ext.form.Hidden({	
+						name: 'emark',
+			            value: '<?php echo $this->data['mark_id'];?>'
+					}),
+					new Ext.form.TextField({
+			    		fieldLabel: 'Модель',
+			    		boxLabel: '',
+			            allowBlank: 'false',
+			            value: '<?php echo $this->data['model'];?>',
+			            disabled: true,
+			            width: 400
+					}),
+					 new Ext.form.Hidden({	
+						name: 'emodel',
+			            value: '<?php echo $this->data['model_id'];?>'
+					}),
+					new Ext.form.TextField({
+			    		fieldLabel: 'Поколение',
+			    		boxLabel: '',
+			            allowBlank: 'false',
+			            value: '<?php echo $this->data['generation_name'];?> <?php echo $year_beg?$year_beg:'-';?>..<?php echo $year_end?$year_end:'-';?>',
+			            disabled: true,
+			            width: 400
+					}),
+					 new Ext.form.Hidden({	
+						name: 'parent_id',
+			            value: '<?php echo $this->data['generation_id'];?>'
+					}),
+					new Ext.form.TextField( {
+						inputType: 'text',
+			    		fieldLabel: 'Описание',
+			    		boxLabel: '',
+			            name: 'title',
+			            allowBlank: true,
+			            value: '',
+			            width:400
+					}),
+					new Ext.form.Hidden({	
+						name: 'order',
+			            value: '50'
+					}),
+					new Ext.form.Hidden({	
+						name: 'type',
+			            value: '1'
+					}),
+					new Ext.form.Hidden({	
+						name: 'visible',
+			            value: '1'
+					}),
+					new Ext.form.Hidden({	
+						name: 'main',
+			            value: '0'
+					}),
+					new Ext.form.ImageMultiSelectField( {
+						imageDir: '/catalog/images/generations',
+						imageStyle: 'width:100px;',
+						clearAllRender: true,
+						cleaAllText: 'Выбрать/Убрать все',
+			            fieldLabel: 'Файл',
+			            boxLabel: '',
+			            hiddenName: 'photos_name',
+			            id: 'egallery-photos_name-id-0',
+			            allowBlank: false,
+			            width: 400,
+			            store: new Ext.data.Store({
+			                isLoaded: false,
+			                url: '/cms/form/egallery/edit',
+			                reader: new Ext.data.JsonReader({
+			                    root:'rows'
+			                }, [
+			                    {name: 'optionValue', type: 'string'},
+			                    {name: 'displayText', type: 'string'}
+			                ])
+			            }),
+			            listeners: {
+			                'afterrender': function() {
+			                    var store = this.getStore();
+			                    store.load({
+			                        callback: function(){
+			                    		this.renderValues();
+			                            this.setValue('');
+			                        },
+			                        scope: this
+			                    });
+			                }
+			            },
+			            valueField:'optionValue',
+			            displayField:'displayText',
+			            typeAhead: false,
+			            mode: 'local',
+			            triggerAction: 'all',
+			            emptyText:'-',
+			            selectOnFocus:true,
+			            editable: false
+			        })
+				], 
+				buttons: [{
+					text: 'Сохранить',
+					handler: function(){
+	    	    	var form = formPanel_egallery_center.getForm();
+		    		if(form.isValid()){
+		    			form.submit({
+		    				url:'/cms/form/egallery/save',
+		                    waitMsg: 'Загрузка...',
+		                    waitTitle: 'Пожалуйста подождите...',
+		                    failure: function (form, action){
+		                    	if (action.result.message)
+		                    		Ext.MessageBox.alert('Ошибка', action.result.message);
+		                    	else
+		                    		Ext.MessageBox.alert('Ошибка', 'На сервере произошла ошибка, либо сервер недоступен');
+		                    },
+	                    	success: function (){
+		                    	Ext.MessageBox.hide();
+		                    	var desktop = MyDesktop.getModule('<?php echo $this->extModuleName?$this->extModuleName:"grid-win-generation";?>').app.getDesktop();
+		                    	var items = desktop.getWindow('<?php echo $this->extParentWin?$this->extParentWin:"tabs-win-generation";?>').items;
+		                    	var i;
+		                    	for (i=0;i<items.getCount();i++){
+		                    		var xtype = items.get(i).getXType();
+		                    		if (xtype == 'editorgrid' || xtype == 'grid'){
+		                    			items.get(i).getStore().reload();
+		                    		}
+		                    		else if (xtype == 'tabpanel'){
+			                    		var items2 = items.get(i).items
+			                    		var j;
+				                    	for (j=0;j<items2.getCount();j++){
+				                    		var xtype = items2.get(j).getXType();
+				                    		if (xtype == 'editorgrid' || xtype == 'grid'){
+				                    			items2.get(j).getStore().reload();
+				                    		}
+				                    	}
+			                    	}
+		                    	}
+								var win = desktop.getWindow('form-win-egallery');
+								win.close();
+		                    }
+		                });
+	                }
+		    	}
+	    	},{
+	        	text: 'Закрыть',
+	        	handler: function(){
+		        	var desktop = MyDesktop.getModule('grid-win-generation').app.getDesktop();
+					var win = desktop.getWindow('form-win-egallery');
+					win.close();
+					
+	        	}
+	    	}]
+	    	});
+		return {
+			init: function() {
+				var desktop = MyDesktop.getModule('grid-win-generation').app.getDesktop();
+				var win = desktop.getWindow('form-win-egallery');
+				var win_height = 430;
+	    		var client_height = 480;
+				if (parseInt(navigator.appVersion)>3) {
+ 					if (navigator.appName=="Netscape") {
+						client_height = window.innerHeight;
+					}
+					if (navigator.appName.indexOf("Microsoft")!=-1) {
+						client_height = document.body.offsetHeight;
+					}
+				}
+				client_height = client_height - 80;
+				if (client_height < win_height){
+					win_height = client_height;
+				}
+				if(!win){
+					win = desktop.createWindow({
+						parent_grid_id: 'tabs-win-generation',
+						id:'form-win-egallery',
+						title:'Галерея',
+						width:900,
+						height:win_height,
+						minWidth:300,
+						minHeight:200,
+						iconCls:'bogus',
+						animCollapse:false,
+						constrainHeader:true,
+	    				shim:false,
+						items: [formPanel_egallery_center, tree],
+						forceLayout: true,
+						layout:'border'
+					});
+				}
+				Ext.get('loading').hide();
+				win.show();
+			}
+		};
+	}();
+	
+	Ext.onReady(crud.myform.init, crud.myform);
+</script>

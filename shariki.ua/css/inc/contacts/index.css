@@ -1,0 +1,12 @@
+div.contacts_content {
+	margin-left: 20px;
+}
+div.contacts_content p{
+	margin-bottom: 20px;
+	text-align: justify;
+}
+
+div.contacts_content h3{
+	font-size: 16px;
+	color: #2d002d;
+}

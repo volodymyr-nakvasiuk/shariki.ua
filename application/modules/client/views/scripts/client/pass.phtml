@@ -1,0 +1,47 @@
+<?php
+	$userData = $this->userData['user'];
+?>
+<div class="AccountForm">
+	<div class="label inner_label"><a href="#home">Мой кабинет</a> &rarr; <a href="#profile">Личные данные</a> &rarr; Изменение пароля</div>
+	<div class="rc_t inner_box"><div class="rc_r"><div class="rc_b"><div class="rc_l">
+	<div class="rc_tl"><div class="rc_tr"><div class="rc_br"><div class="rc_bl">
+	<div class="user_content">
+		<div class="infoBox">
+			<div><span>Внимание! Внесенные изменения будут отображаться на всех Ваших объявлениях.</span></div>
+		</div>
+		<div class="clear"></div>
+<?php /*		<h3>Изменить пароль:</h3>*/?>
+		<div class="UserForm">
+			<form action="/client/form/profilepass/save/" method="post" id="clientProfileForm">
+				<input type="hidden" name="id" value="<?php echo $userData['id'];?>" />
+				<div class="column">
+					<div>
+						<p>Старый пароль<i>*</i></p>
+						<input type="password" name="old_password" class="password" value="" />
+					</div>
+					<div>
+						<p>Новый пароль<i>*</i></p>
+						<input type="password" name="new_password" class="password new_password" value="" />
+					</div>
+					<div>
+						<p>Подтвердите (еще раз новый)<i>*</i></p>
+						<input type="password" name="confirm_password" class="password" value="" />
+					</div>
+					<div id="showPass" status="0">Показать пароли</div>
+				</div>
+				<div class="back">
+					&larr; <a href="#profile">Вернутся назад</a>
+				</div>
+				<div class="clear"></div>
+				<div id="submitStatusBox" class="statusBox"></div>
+				<div class="clear"></div>
+				<div class="submit">
+					<input type="submit" class="save" name="" value="" />
+				</div>
+			</form>
+		</div>
+	</div>
+		<div class="clear"></div>
+	</div></div></div></div>
+	</div></div></div></div>
+</div>
