@@ -30,7 +30,7 @@ class Crud_Form_ExtJs_News extends ArOn_Crud_Form_ExtJs
 
 	public function saveValidData(){
 		if (empty ( $this->actionId )) {
-			$this->_alternative_data['news_created_date'] = date("Y-m-d 12:00:00", time());
+			$this->_alternative_data['news_created_date'] = date("Y-m-d H:i:s", time());
 		}
 		parent::saveValidData();
 	}

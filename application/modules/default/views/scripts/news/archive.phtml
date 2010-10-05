@@ -1,0 +1,19 @@
+<div class="news_archive_content">
+	<?php
+		$monthActive = 0;
+		foreach ($this->data['data'] as $news){
+			$time = strtotime($news['news_created_date']);
+			$date = getdate($time);
+			if ($date['mon']!=$monthActive){
+	?>
+		<div class="news_archive_month"><?php echo ArOn_Crud_Tools_Date::russian_date('{{F}}', $time);?></div>
+	<?php
+			}
+	?>
+			<div class="news_archive_item">
+				<a href="/news/detailed/<?php echo $news['news_id'];?>/"><?php echo $news['news_title'];?> (<?php echo date('d.m.Y', strtotime($news['news_created_date']));?>)</a>
+			</div>
+	<?php
+		}
+	?>
+</div>

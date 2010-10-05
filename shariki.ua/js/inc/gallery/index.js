@@ -4,9 +4,11 @@ js.include("jquery.scrollable");
 js.include("jquery.lightbox");
 $(function() {
 	$(window).resize(function (){
+		$(".scrollable").hide();
 		var w = $(".site_content_center").width()-120;
 		$(".scrollable").width(w);
 		$(".scrollable .items div.item_box").width(w);
+		$(".scrollable").show();
 	}).resize();
 	$(".scrollable").scrollable();
 	$("a.lightbox_img").lightBox({
