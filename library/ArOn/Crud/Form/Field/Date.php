@@ -5,7 +5,7 @@ class ArOn_Crud_Form_Field_Date extends ArOn_Crud_Form_Field {
 	protected $endDate;
 	protected $format;
 
-	function __construct($name, $title = null, $description = null, $startDate = null, $endDate = null, $required = null, $notEdit = false, $format = 'MM-DD-YYYY') {
+	function __construct($name, $title = null, $description = null, $startDate = null, $endDate = null, $required = null, $notEdit = false, $format = 'YYYY-MM-DD') {
 
 		$this->startDate = $startDate;
 		$this->endDate = $endDate;
@@ -30,20 +30,20 @@ class ArOn_Crud_Form_Field_Date extends ArOn_Crud_Form_Field {
 	public function getInsertData() {
 		if (! $this->saveInDataBase)
 		return false;
-		$value = $this->element->getValue ();
+		$value = $this->getValue ();
 		$value = str_replace ( "-", "/", $value );
 		$value = date ( 'Y-m-d', strtotime ( $value ) );
 
 		$data = array ();
 		$data ['model'] = 'default';
-		$data ['data'] = array ('key' => $this->element->getName (), 'value' => $value );
+		$data ['data'] = array ('key' => $this->getName (), 'value' => $value );
 
 		return $data;
 	}
 
 	public function setValue($value) {
 		$value = str_replace ( "-", "/", $value );
-		$value = date ( 'm-d-Y', strtotime ( $value ) );
+		$value = date ( 'Y-m-d', strtotime ( $value ) );
 		return parent::setValue ( $value );
 	}
 }

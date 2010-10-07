@@ -17,6 +17,7 @@ class Crud_Grid_News extends ArOn_Crud_Grid_ExtJs {
 			'news_photo' => new ArOn_Crud_Grid_Column_Image('Изображение',null,true,false,'100','/uploads/images/news/{news_id}/small/{news_photo}'),
 			'news_title' => new ArOn_Crud_Grid_Column_Default("Название",null,true,false,'100'),
 			'news_description' => new ArOn_Crud_Grid_Column_Default("Описание",null,true,false,'100'),
+			'news_text' => new ArOn_Crud_Grid_Column_Default("Текст новости",null,true,false,'100'),
 			'news_created_date' => new ArOn_Crud_Grid_Column_Default("Дата",null,true,false,'100'),
 		);
 

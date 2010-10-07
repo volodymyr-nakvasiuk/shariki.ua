@@ -27,7 +27,7 @@ class ArOn_Db_Filter_Field extends ArOn_Db_Filter {
 		} else {
 			$compare = " = ";
 		}
-		if(!(floatval($this->_expr) > 0) || (strpos($this->_expr,' ') !== false)) $this->_expr = ArOn_Db_Table::getDefaultAdapter ()->quote ( $this->_expr );
+		if(!(strval(floatval($this->_expr))==$this->_expr) || (strpos($this->_expr,' ') !== false)) $this->_expr = ArOn_Db_Table::getDefaultAdapter ()->quote ( $this->_expr );
 		return ($this->_expr instanceof Zend_Db_Expr) ? $this->_expr->__toString () : $compare . $this->_expr;
 	}
 

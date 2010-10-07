@@ -1,13 +1,16 @@
 <?php
 class ServicesController extends Abstract_Controller_FrontendController {
 	
+	public function init(){
+		parent::init();
+		$this->view->activeMenu = 'services';
+	}
+	
 	public function indexAction(){
 		$this->_forward('detail');
 	}
 	
 	public function detailAction(){
-		$this->view->activeMenu = 'services';
-		
 		$services = new Init_Services();
 		$this->view->data = $services->getData();
 		$id = $this->_request->getParam('id');

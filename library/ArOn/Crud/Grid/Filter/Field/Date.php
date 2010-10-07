@@ -6,7 +6,7 @@ class ArOn_Crud_Grid_Filter_Field_Date extends ArOn_Crud_Grid_Filter_Field {
 
 	public function updateField() {
 		parent::updateField ();
-		$this->element->setRequired ( TRUE )->setValidators ( array (array ('NotEmpty', true ), new Zend_Validate_Date ( 'MM-DD-YYYY' ) ) );
+		$this->element->setRequired ( TRUE )->setValidators ( array (array ('NotEmpty', true ), new Zend_Validate_Date ( 'YYYY-MM-DD' ) ) );
 		$this->element->helper = 'GridFormCalendar';
 	}
 

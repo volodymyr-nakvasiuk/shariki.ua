@@ -24,7 +24,7 @@ class ArOn_Crud_Form_ExtJs_FormCalendar extends ArOn_Crud_Form_ExtJs_Element {
             allowBlank: '" . $this->_allowBlank . "',
             value: '" . $this->_value . "',
             width: " . $this->_width . ",
-            format: 'm-d-Y'
+            format: 'Y-m-d'
 		})";
 
 		return $html;

@@ -1,0 +1,77 @@
+div.news_content{
+	margin-right: 20px;
+}
+.news_item{
+	margin-top: 20px;
+}
+.news_item_photo{
+	width: 140px;
+}
+.news_item_content{
+}
+div.news_item_date{
+	clear: both;
+	float: none;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+div.news_item_title{
+	clear: both;
+	float: none;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+div.news_item_title a{
+	text-decoration: underline;
+	color: #2d002d;
+}
+div.news_item_text{
+	clear: both;
+	float: none;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+div.news_bottom{
+	clear: both;
+	float: none;
+	margin-top: 40px;
+	margin-left: 10px;
+}
+div.news_subscribe{
+	clear: none;
+	float: left;
+}
+div.news_subscribe span{
+	text-decoration: underline;
+	color: #2d002d;
+}
+div.news_subscribe form{
+	margin-top: 10px;
+	text-align: center;
+}
+div.news_subscribe input.text{
+	background: url(/img/input.png) no-repeat #ffffff;
+	width: 236px;
+	height: 16px;
+	padding:3px 10px;
+	font-size: 12px;
+	border: none;
+}
+div.news_subscribe input.submit{
+	background: url(/img/submit.png) no-repeat #ffffff;
+	width: 104px;
+	height: 26px;
+	padding:0;
+	font-size: 12px;
+	border: none;
+	margin-top: 10px;
+}
+div.news_archive{
+	clear: none;
+	float: right;
+	margin-right: 20px;
+}
+div.news_archive a{
+	text-decoration: underline;
+	color: #2d002d;
+}

@@ -5,13 +5,14 @@
 			$time = strtotime($news['news_created_date']);
 			$date = getdate($time);
 			if ($date['mon']!=$monthActive){
+				$monthActive = $date['mon'];
 	?>
 		<div class="news_archive_month"><?php echo ArOn_Crud_Tools_Date::russian_date('{{F}}', $time);?></div>
 	<?php
 			}
 	?>
 			<div class="news_archive_item">
-				<a href="/news/detailed/<?php echo $news['news_id'];?>/"><?php echo $news['news_title'];?> (<?php echo date('d.m.Y', strtotime($news['news_created_date']));?>)</a>
+				<a href="/news/detail/<?php echo $news['news_id'];?>/"><?php echo $news['news_title'];?> (<?php echo date('d.m.Y', strtotime($news['news_created_date']));?>)</a>
 			</div>
 	<?php
 		}
