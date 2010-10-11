@@ -1,14 +1,14 @@
 .menu_main {
 	background-color: #2d002d;
 	color: #ffffff;
-	font-size: 14px;
+	font-size: 15px;
 }
 .menu_main tr td {
 	cursor: pointer;
 }
 .menu_main tr td a{
 	color: #ffffff;
-	font-size: 14px;
+	font-size: 15px;
 }
 .menu_main tr td.active,
 .menu_main tr td.hover{

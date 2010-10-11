@@ -54,7 +54,7 @@ div.news_subscribe input.text{
 	width: 236px;
 	height: 16px;
 	padding:3px 10px;
-	font-size: 12px;
+	font-size: 13px;
 	border: none;
 }
 div.news_subscribe input.submit{
@@ -62,7 +62,7 @@ div.news_subscribe input.submit{
 	width: 104px;
 	height: 26px;
 	padding:0;
-	font-size: 12px;
+	font-size: 13px;
 	border: none;
 	margin-top: 10px;
 }

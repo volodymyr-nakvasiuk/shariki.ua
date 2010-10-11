@@ -35,7 +35,7 @@ div.desktop_site_box {
 	border: solid 1px #777777;
 	background: white;
 	color: #555;
-	font: bold 13px tahoma, arial, helvetica;
+	font: bold 14px tahoma, arial, helvetica;
 	text-align: center;
 }
 
@@ -55,7 +55,7 @@ div.all_site_box {
 	width: 100%;
 	margin: 0 auto;
 	padding-bottom: 30px;
-	font:12px Tahoma,Verdana,sans-serif;
+	font:13px Tahoma,Verdana,sans-serif;
 	color:#000;
 }
 div.all_site_box div{
@@ -70,7 +70,7 @@ div.all_site_box a.lnk{
 div.all_site_box a{
 	outline:none;
 	text-decoration: none;
-	font:12px Tahoma,Verdana,sans-serif;
+	font:13px Tahoma,Verdana,sans-serif;
 	color:#000;
 }
 div.all_site_box img{

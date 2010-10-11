@@ -164,6 +164,18 @@ MyDesktop = new Ext.app.App({
 					title:'Наша команда',
 					url:'/cms/grid/team',
 					icon:'bogus'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-marketc',
+					title:'Категории',
+					url:'/cms/grid/marketc',
+					icon:'bogus'
+				}),
+				new Ext.app.Module({
+					id:'grid-win-marketd',
+					title:'Товары',
+					url:'/cms/grid/marketd',
+					icon:'bogus'
 				})
 			];
 	},
@@ -183,6 +195,19 @@ MyDesktop = new Ext.app.App({
 							this.getModule('grid-win-partners').launcher,
 							this.getModule('grid-win-services').launcher,
 							this.getModule('grid-win-photos').launcher,
+							{
+								text:'Розничная торговля',
+								iconCls:'bogus',
+								handler:function() {
+									return false;
+								},
+								menu:{
+									items:[
+										this.getModule('grid-win-marketc').launcher,
+										this.getModule('grid-win-marketd').launcher
+									]
+								}
+							},
 							this.getModule('grid-win-news').launcher,
 							this.getModule('grid-win-feedback').launcher,
 							this.getModule('grid-win-team').launcher

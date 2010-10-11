@@ -11,6 +11,8 @@ class Cms_IndexController extends Abstract_Controller_CmsController {
 
 	public function indexAction(){
 		$this->view->headScript()
+		->appendFile('/js/ckeditor/ckeditor.js')
+		->appendFile('/js/ckfinder/ckfinder.js')
 		->appendFile('/cms/js/extjs/adapter/ext/ext-base.js')
 		->appendFile('/cms/js/extjs/ext-all.js')
 		->appendFile('/cms/js/extjs/ux/utils/Ext.ux.utils.nv.js')
@@ -24,6 +26,7 @@ class Cms_IndexController extends Abstract_Controller_CmsController {
 		->appendFile('/cms/js/extjs/form/MultiSelect.js')
 		->appendFile('/cms/js/extjs/form/ImageMultiSelect.js')
 		->appendFile('/cms/js/extjs/form/ColorField.js')
+		->appendFile('/cms/js/extjs/form/CKEditor.js')
 		->appendFile('/cms/js/extjs/ux/FileUploadField.js')
 		->appendFile('/cms/js/extjs/ux/plugins/Ext.ux.Admin.plugins.js')
 		->appendFile('/cms/js/extjs/ux/plugins/Ext.ux.plugins.HtmlEditorImageInsert.js')

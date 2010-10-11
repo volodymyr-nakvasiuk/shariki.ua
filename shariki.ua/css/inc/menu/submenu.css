@@ -4,7 +4,7 @@ div.left_menu p {
 div.left_menu p a{
 	color: #2d002d;
 	text-decoration: underline;
-	font-size: 14px;
+	font-size: 15px;
 }
 div.left_menu p a:HOVER{
 	text-decoration: none;
