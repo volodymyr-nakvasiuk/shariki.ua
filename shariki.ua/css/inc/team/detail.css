@@ -1,0 +1,12 @@
+div.team_content table.team_content{
+	margin: 20px 20px 0 0;
+	text-align: justify;
+}
+
+div.team_content h3{
+	font-size: 17px;
+	color: #2d002d;
+}
+div.team_content img.team_photo{
+	margin: 0 55px 0 20px;
+}

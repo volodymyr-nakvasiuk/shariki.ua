@@ -1,0 +1,13 @@
+<?php
+	foreach($this->data as $submenu){
+		$preTag = '<a href="/team/detail/'.$submenu['team_id'].'/">';
+		$postTag = '</a>';
+		if ($submenu['team_id'] == $this->selectedId){
+			$preTag = '';
+			$postTag = '';
+		}
+?>
+		<p><?php echo $preTag.$submenu['team_name'].$postTag;?></p>
+<?php
+	}
+?>

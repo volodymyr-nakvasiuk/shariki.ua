@@ -21,3 +21,6 @@ CREATE TABLE `marketd` (
 )
 COLLATE='utf8_unicode_ci'
 ENGINE=MyISAM;
+
+#2010.10.13
+ALTER TABLE `team`  ADD COLUMN `news_text` TEXT NULL DEFAULT NULL COLLATE 'utf8_unicode_ci' AFTER `team_title`;
