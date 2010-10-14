@@ -1,77 +1,44 @@
-div.news_content{
-	margin-right: 20px;
+div.calendar_title {
+	color: #2d002d;
+	font-size:15px;
+	clear:both;
+	float:none;
 }
-.news_item{
+div.calendar_content{
+	clear:both;
+	float:none;
+	margin-right: 20px;
 	margin-top: 20px;
 }
-.news_item_photo{
+.calendar_item{
+	margin-top: 20px;
+}
+.calendar_item_photo{
 	width: 140px;
 }
-.news_item_content{
+.calendar_item_content{
 }
-div.news_item_date{
+div.calendar_item_title{
 	clear: both;
 	float: none;
 	margin-left: 30px;
 	margin-top: 10px;
 }
-div.news_item_title{
+div.calendar_item_title a{
+	text-decoration: underline;
+	color: #2d002d;
+}
+div.calendar_item_text{
 	clear: both;
 	float: none;
 	margin-left: 30px;
 	margin-top: 10px;
 }
-div.news_item_title a{
-	text-decoration: underline;
-	color: #2d002d;
-}
-div.news_item_text{
-	clear: both;
-	float: none;
-	margin-left: 30px;
-	margin-top: 10px;
-}
-div.news_bottom{
-	clear: both;
-	float: none;
-	margin-top: 40px;
-	margin-left: 10px;
-}
-div.news_subscribe{
-	clear: none;
-	float: left;
-}
-div.news_subscribe span{
-	text-decoration: underline;
-	color: #2d002d;
-}
-div.news_subscribe form{
-	margin-top: 10px;
-	text-align: center;
-}
-div.news_subscribe input.text{
-	background: url(/img/input.png) no-repeat #ffffff;
-	width: 236px;
-	height: 16px;
-	padding:3px 10px;
-	font-size: 13px;
-	border: none;
-}
-div.news_subscribe input.submit{
-	background: url(/img/submit.png) no-repeat #ffffff;
-	width: 104px;
-	height: 26px;
-	padding:0;
-	font-size: 13px;
-	border: none;
-	margin-top: 10px;
-}
-div.news_archive{
-	clear: none;
-	float: right;
-	margin-right: 20px;
-}
-div.news_archive a{
-	text-decoration: underline;
-	color: #2d002d;
+div.calendar_empty {
+	line-height:200px;
+	height:350px;
+	width:100%;
+	vertical-align:middle;
+	text-align:center;
+	font-size: 22px;
 }

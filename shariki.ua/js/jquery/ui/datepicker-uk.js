@@ -1,3 +1,5 @@
+js.module("jquery.ui.datepicker-ua");
+js.include("jquery.ui.datepicker");
 /* Ukrainian (UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* Written by Maxim Drogobitskiy (maxdao@gmail.com). */
 jQuery(function($){

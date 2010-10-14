@@ -1,3 +1,5 @@
+js.module("jquery.ui.core");
+js.include("jquery.min");
 /*!
  * jQuery UI 1.8.5
  *

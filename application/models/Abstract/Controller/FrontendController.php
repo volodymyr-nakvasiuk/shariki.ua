@@ -241,6 +241,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 	
 	protected function initLayouts(){
 		$this->view->HTMLscript = '';
+		$this->view->jsParams = array();
 		
 		$this->view->layouts = array();
 		
@@ -270,6 +271,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 
 		$this->view->headLink()
 		->headLink(array('rel' => 'shortcut icon', 'href' => '/images/favicon.ico'), 'PREPEND')
+		->appendStylesheet('/css/jquery/eggplant/theme.css')
 		->appendStylesheet('/css/site.css')
 		->appendStylesheet('/css/opera.css');
 		
@@ -277,7 +279,6 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		->appendFile('/js/jquery/min.js')
 		->appendFile('/js/fixie.js')
 		->appendFile('/js/funcs.js')
-		//->appendFile('/clickheat/js/clickheat.js')
 		;
 	}
 	

@@ -1,22 +1,22 @@
 <?php
 	$data = false;
 	foreach($this->data['data'] as $submenu){
-		if ($submenu['news_id'] == $this->selectedId){
+		if ($submenu['calendar_id'] == $this->selectedId){
 			$data = $submenu;
 			break;
 		}
 	}
 	if (!$data) $data = $this->data['data'][0];
 ?>
-<div class="news_content">
-	<h3><?php echo $data['news_title'];?></h3>
-	<table cellspacing="0" cellpadding="0" border="0" width="100%" class="news_content">
+<div class="calendar_content">
+	<h3><?php echo $data['calendar_title'];?></h3>
+	<table cellspacing="0" cellpadding="0" border="0" width="100%" class="calendar_content">
 		<tr>
 			<td valign="top">
-				<?php echo $data['news_text'];?>
+				<?php echo $data['calendar_text'];?>
 			</td>
 			<td align="right" valign="top">
-				<img class="news_photo" alt="<?php echo $data['news_title'];?>" src="/uploads/images/news/<?php echo $data['news_id'].'/middle/'.$data['news_photo'];?>"/>
+				<img class="calendar_photo" alt="<?php echo $data['calendar_title'];?>" src="/uploads/images/calendar/<?php echo $data['calendar_id'].'/middle/'.$data['calendar_photo'];?>"/>
 			</td>
 		</tr>
 	</table>

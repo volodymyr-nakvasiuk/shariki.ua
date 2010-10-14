@@ -30,8 +30,8 @@ if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){
 }
 var host_name = '<?php echo $this->http_host;?>';
 var main_host_name = '<?php echo HOST_NAME;?>';
-var news_host_name = '<?php echo NEWS_HOST_NAME;?>';
 var cookie_host_name = '<?php echo COOKIE_HOST_NAME;?>';
+var phpParams = <?php echo Zend_Json_Encoder::encode($this->jsParams);?>;
 </script>
 </head>
 <body>

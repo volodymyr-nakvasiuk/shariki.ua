@@ -1,3 +1,5 @@
+js.module("jquery.ui.datepicker");
+js.include("jquery.ui.core");
 /*
  * jQuery UI Datepicker 1.8.5
  *

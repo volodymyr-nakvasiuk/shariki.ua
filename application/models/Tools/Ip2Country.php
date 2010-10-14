@@ -14,7 +14,7 @@ class Tools_Ip2Country{
 		
 		$this->_config = array(
 			'host' => $config['host'], //example host name
-			'port' => 3306, //3306 -default mysql port number
+			'port' => $config['port']?$config['port']:3306, //3306 -default mysql port number
 			'dbName' => $config['dbname'], //example db name
 			'dbUserName' => $config['username'], //example user name
 			'dbUserPassword' => $config['password'], //example user password

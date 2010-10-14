@@ -1,37 +1,33 @@
-<div class="news_content">
-	<?php foreach ($this->data['data'] as $news){ $link = '/news/detail/'.$news['news_id'].'/';?>
-		<table cellspacing="0" cellpadding="0" border="0" width="100%" class="news_item"><tr>
-			<td class="news_item_photo" valign="top">
-				<a href="<?php echo $link;?>">
-					<img alt="<?php echo $news['news_title'];?>" src="/uploads/images/news/<?php echo $news['news_id'].'/small/'.$news['news_photo'];?>" />
-				</a>
-			</td>
-			<td class="news_item_content" valign="top">
-				<div class="news_item_date">
-					<?php echo date('d.m.Y', strtotime($news['news_created_date']));?>
-				</div>
-				<div class="news_item_title">
+<div class="calendar_title">Календарь праздников  - <b><?php echo $this->date;?></b></div>
+<div class="calendar_content">
+<?php
+	if (count($this->data['data'])){
+		foreach ($this->data['data'] as $calendar){ $link = '/calendar/detail/'.$calendar['calendar_id'].'/';
+?>
+			<table cellspacing="0" cellpadding="0" border="0" width="100%" class="calendar_item"><tr>
+				<td class="calendar_item_photo" valign="top">
 					<a href="<?php echo $link;?>">
-						<?php echo $news['news_title'];?>
+						<img alt="<?php echo $calendar['calendar_title'];?>" src="/uploads/images/calendar/<?php echo $calendar['calendar_id'].'/small/'.$calendar['calendar_photo'];?>" />
 					</a>
-				</div>
-				<div class="news_item_text">
-					<?php echo $news['news_description'];?>
-				</div>
-			</td>
-		</tr></table>
-	<?php }?>
-</div>
-<div class="news_bottom">
-	<div class="news_subscribe">
-		<span>Подписаться на новости</span><br/>
-		<form action="#" method="post">
-			<label for="email">E-mail: </label><input name="email" id="email" type="text" class="text"/>
-			<br/>
-			<input value="" type="button" class="submit"/>
-		</form>
-	</div>
-	<div class="news_archive">
-		<a href="/news/archive/">Перейти в архив новостей...</a>
-	</div>
+				</td>
+				<td class="calendar_item_content" valign="top">
+					<div class="calendar_item_title">
+						<a href="<?php echo $link;?>">
+							<?php echo $calendar['calendar_title'];?>
+						</a>
+					</div>
+					<div class="calendar_item_text">
+						<?php echo $calendar['calendar_description'];?>
+					</div>
+				</td>
+			</tr></table>
+<?php
+		}
+	}
+	else {
+?>
+		<div class="calendar_empty">Не найдено ниодного события!</div>
+<?php
+	}
+?>
 </div>
