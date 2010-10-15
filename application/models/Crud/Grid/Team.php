@@ -17,6 +17,7 @@ class Crud_Grid_Team extends ArOn_Crud_Grid {
 			'team_photo' => new ArOn_Crud_Grid_Column_Image('Фото',null,true,false,'100','/uploads/images/team/{team_id}/small/{team_photo}'),
 			'team_name' => new ArOn_Crud_Grid_Column_Default("Имя",null,true,false,'100'),
 			'team_title' => new ArOn_Crud_Grid_Column_Default("Должность",null,true,false,'100'),
+			'team_text' => new ArOn_Crud_Grid_Column_Default("Текст",null,true,false,'100'),
 			'team_order' => new ArOn_Crud_Grid_Column_Default("Сортировка",null,true,false,'100'),
 		);
 

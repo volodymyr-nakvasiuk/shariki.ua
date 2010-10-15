@@ -15,6 +15,7 @@ class Crud_Form_ExtJs_Team extends ArOn_Crud_Form_ExtJs
 			'name' => new ArOn_Crud_Form_Field_Text('team_name', 'Имя', null, true) ,
 			'title' => new ArOn_Crud_Form_Field_Text('team_title', 'Должность', null, true) ,
 			'order' => new ArOn_Crud_Form_Field_Numeric('team_order', 'Порядок сортировки', null, true) ,
+			'text' => new ArOn_Crud_Form_Field_TextArea('team_text', 'Новость', null, false),
 		);
 		if(empty($this->actionId)){
 			unset($this->fields['id']);
