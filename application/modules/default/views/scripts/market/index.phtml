@@ -1,0 +1,32 @@
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="market_content">
+	<tr>
+		<td valign="top" width="220px">
+			<img src="/uploads/images/market_index.png"/>
+		</td>
+		<td valign="top" style="padding-left:20px;">
+			<h3><?php echo $this->staticContent['static_title'];?></h3>
+			<?php echo $this->staticContent['static_text'];?>
+		</td>
+	</tr>
+</table>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="market_cat_box">
+	<tr>
+<?php $i=1; foreach ($this->data as $item){$i++; $link = '/market/category/'.$item['marketc_id'].'/';?>
+		<td valign="top">
+			<table cellspacing="0" cellpadding="0" border="0" width="100%" class="market_cat_item_box">
+				<tr>
+					<td valign="top" width="240px">
+						<a href="<?php echo $link;?>">
+							<img src="/uploads/images/market_cat/<?php echo $item['marketc_id'];?>/middle/<?php echo $item['marketc_img'];?>"/>
+						</a>
+					</td>
+					<td valign="top" style="padding:0 20px;">
+						<div class="market_cat_item_title""><a href="<?php echo $link;?>"><?php echo $item['marketc_title'];?></a></div>
+						<div class="market_cat_item_text""><?php echo $item['marketc_text'];?></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+<?php if ($i%2) echo '</tr><tr>';} if(!($i%2)) echo '<td></td>';?>
+	</tr>
+</table>

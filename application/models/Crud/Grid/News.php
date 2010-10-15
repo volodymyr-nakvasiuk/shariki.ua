@@ -1,5 +1,5 @@
 <?php
-class Crud_Grid_News extends ArOn_Crud_Grid_ExtJs {
+class Crud_Grid_News extends ArOn_Crud_Grid {
 
 	protected $_idProperty = 'news_id';
 	public $sort = "news_created_date";

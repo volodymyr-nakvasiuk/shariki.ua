@@ -1,5 +1,5 @@
 <?php
-class Crud_Grid_ExtJs_Marketc extends ArOn_Crud_Grid_ExtJs {
+class Crud_Grid_Marketc extends ArOn_Crud_Grid {
 
 	protected $_idProperty = 'marketc_id';
 	public $sort = "marketc_order";
@@ -18,6 +18,7 @@ class Crud_Grid_ExtJs_Marketc extends ArOn_Crud_Grid_ExtJs {
 			'marketc_id' => new ArOn_Crud_Grid_Column_Default("Id",null,true,false,'50'),
 			'marketc_img' => new ArOn_Crud_Grid_Column_Image('Изображение',null,true,false,'100','/uploads/images/market_cat/{marketc_id}/small/{marketc_img}'),
 			'marketc_title' => new ArOn_Crud_Grid_Column_Default("Название",null,true,false,'100'),
+			'marketc_text' => new ArOn_Crud_Grid_Column_Default("Описание категории",null,true,false,'100'),
 			'marketc_order' => new ArOn_Crud_Grid_Column_Default("Сортировка",null,true,false,'50'),
 			'marketd' => new ArOn_Crud_Grid_Column_JoinMany('Товары','Db_Marketd',null,null,', ',5, '100')
 		);

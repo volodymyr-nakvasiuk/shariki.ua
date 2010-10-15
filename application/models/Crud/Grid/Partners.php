@@ -1,5 +1,5 @@
 <?php
-class Crud_Grid_Partners extends ArOn_Crud_Grid_ExtJs {
+class Crud_Grid_Partners extends ArOn_Crud_Grid {
 
 	protected $_idProperty = 'partners_id';
 	public $sort = "partners_order";

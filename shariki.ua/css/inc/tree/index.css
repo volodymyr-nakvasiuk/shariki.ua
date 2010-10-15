@@ -16,6 +16,7 @@ div.tree_content{
 	float:none;
 	font-size:13px;
 	margin-top:20px;
+	margin-bottom:30px;
 }
 div.tree_content a{
 	font-size:13px;
@@ -23,16 +24,20 @@ div.tree_content a{
 div.tree_item_box{
 	clear:both;
 	float:none;
+	margin-left:35px;
 }
 div.tree_item_title{
 	clear:both;
 	float:none;
+	margin-top:10px;
 }
 div.tree_subitem_box{
 	clear:both;
 	float:none;
+	margin-left:25px;
 }
 div.tree_subitem_title{
 	clear:both;
 	float:none;
+	margin-top:10px;
 }

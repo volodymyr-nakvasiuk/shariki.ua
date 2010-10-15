@@ -1,5 +1,5 @@
 <?php
-class Crud_Grid_Indexmenu extends ArOn_Crud_Grid_ExtJs {
+class Crud_Grid_Indexmenu extends ArOn_Crud_Grid {
 
 	protected $_idProperty = 'indexmenu_id';
 	public $sort = "indexmenu_order";

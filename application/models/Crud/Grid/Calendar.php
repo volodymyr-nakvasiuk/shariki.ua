@@ -1,5 +1,5 @@
 <?php
-class Crud_Grid_Calendar extends ArOn_Crud_Grid_ExtJs {
+class Crud_Grid_Calendar extends ArOn_Crud_Grid {
 
 	protected $_idProperty = 'calendar_id';
 	public $sort = "calendar_date";

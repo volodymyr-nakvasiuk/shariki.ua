@@ -1,0 +1,19 @@
+<h3 class="market_title"><?php echo $this->data[0]['marketc_title'];?></h3>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="market_tov_box">
+	<tr>
+		<?php $i=1; foreach ($this->data as $item){$i++; ?>
+		<td valign="top">
+			<table cellspacing="0" cellpadding="0" border="0" width="100%" class="market_tov_item_box">
+				<tr>
+					<td valign="top" width="140px">
+						<img src="/uploads/images/market_tov/<?php echo $item['marketd_id'];?>/small/<?php echo $item['marketd_img'];?>"/>
+					</td>
+					<td valign="top" style="padding:0 20px;">
+						<?php echo $item['marketd_text'];?>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<?php if ($i%2) echo '</tr><tr>';} if(!($i%2)) echo '<td></td>';?>
+	</tr>
+</table>

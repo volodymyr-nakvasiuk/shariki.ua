@@ -1,5 +1,5 @@
 <?php
-class Crud_Grid_Static extends ArOn_Crud_Grid_ExtJs {
+class Crud_Grid_Static extends ArOn_Crud_Grid {
 
 	protected $_idProperty = 'static_id';
 

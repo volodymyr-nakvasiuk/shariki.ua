@@ -1,5 +1,5 @@
 <?php
-class Crud_Grid_Feedback extends ArOn_Crud_Grid_ExtJs {
+class Crud_Grid_Feedback extends ArOn_Crud_Grid {
 
 	protected $_idProperty = 'feedback_id';
 	public $sort = "feedback_order";
