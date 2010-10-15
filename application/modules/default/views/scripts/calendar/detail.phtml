@@ -9,7 +9,7 @@
 	if (!$data) $data = $this->data['data'][0];
 ?>
 <div class="calendar_content">
-	<h3><?php echo $data['calendar_title'];?></h3>
+	<h3><span><?php echo $this->date.' - ';?></span><?php echo $data['calendar_title'];?></h3>
 	<table cellspacing="0" cellpadding="0" border="0" width="100%" class="calendar_content">
 		<tr>
 			<td valign="top">

@@ -18,24 +18,6 @@ String.prototype.empty = function() {
 String.prototype.blank = function() {
 	return /^\s*$/.test(this);
 };
-$(window).load(function(){
-	$('img[original]').each(function (){
-		var $this = $(this);
-		$this.attr("src", $this.attr("original"));
-		$this.removeAttr("original");
-	});
-});
-$(function(){
-	$('img').each(function (){
-		if (!this.complete){
-			var $this = $(this);
-			if (undefined == $this.attr("original")) {
-				$this.attr("original", $this.attr("src"));
-			}
-			$this.removeAttr("src");
-		}
-	});
-});
 function dec2bin(num){
 	var bin = [];
 	var dec = num;

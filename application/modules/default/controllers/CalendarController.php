@@ -21,9 +21,11 @@ class CalendarController extends Abstract_Controller_FrontendController {
 		$time = strtotime($r['calendar_date']);
 		$date = date('Y-m-d', $time);
 		$calendar = new Init_Calendar($date);
+		$this->view->jsParams['date'] = $date;
+		$this->view->date = ArOn_Crud_Tools_Date::russian_date('d F Y', $time);
 		$this->view->data = $calendar->getData();
 		$this->view->selectedId = $id;
-		
-		$this->view->layouts['left']["left_menu"] = array('inc/menu/calendar', 100);
+		$this->view->layouts['left']["left_calendar"] = array('inc/calendar/left', 90);
+		$this->view->layouts['left']["left_menu"] = array('inc/menu/calendar', 110);
 	}
 }

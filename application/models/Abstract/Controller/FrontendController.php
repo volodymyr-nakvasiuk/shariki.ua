@@ -271,7 +271,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 
 		$this->view->headLink()
 		->headLink(array('rel' => 'shortcut icon', 'href' => '/images/favicon.ico'), 'PREPEND')
-		->appendStylesheet('/css/jquery/eggplant/theme.css')
+		->appendStylesheet('/css/jquery/shariki/theme.css')
 		->appendStylesheet('/css/site.css')
 		->appendStylesheet('/css/opera.css');
 		

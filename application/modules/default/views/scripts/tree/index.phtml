@@ -17,7 +17,9 @@
 		<div class="tree_item_box">
 			<div class="tree_item_title"><a href="/market/">Розничная торговля</a></div>
 			<div class="tree_subitem_box">
-				<div class="tree_subitem_title"></div>
+<?php foreach ($this->market as $item){$link = '/market/category/'.$item['marketc_id'].'/';?>
+				<div class="tree_subitem_title"><a href="<?php echo $link;?>"><?php echo $item['marketc_title'];?></a></div>
+<?php } ?>
 			</div>
 		</div>
 		<div class="tree_item_box">

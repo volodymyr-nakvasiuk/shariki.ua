@@ -1,11 +1,18 @@
+div.left_menu{
+	margin: 20px 0px 0px 20px;
+}
 div.calendar_content table.calendar_content{
 	margin: 20px 20px 0 0;
 	text-align: justify;
 }
-
 div.calendar_content h3{
 	font-size: 17px;
 	color: #2d002d;
+}
+div.calendar_content h3 span{
+	font-size: 15px !important;
+	color: #2d002d !important;
+	font-weight:normal !important;
 }
 div.calendar_content img.calendar_photo{
 	margin: 0 55px 0 20px;
