@@ -8,7 +8,7 @@ class Crud_Grid_Marketd extends ArOn_Crud_Grid {
 	public $editAction = 'marketd';
 
 	public function init() {
-		$this->trash = false;
+		$this->trash = true;
 		$this->gridTitle = 'Розничная торговля - Товары';
 
 		$this->gridActionName = 'marketd';

@@ -2,7 +2,7 @@
 class Crud_Form_ExtJs_Services extends ArOn_Crud_Form_ExtJs
 {
 	protected $modelName = 'Db_Services';
-	protected $_title = 'Услуга';
+	protected $_title = 'Описание';
 
 	public function init ()
 	{
@@ -20,6 +20,7 @@ class Crud_Form_ExtJs_Services extends ArOn_Crud_Form_ExtJs
 			unset($this->fields['id']);
 		}
 		else {
+			$this->_alternative_data['is_deleted'] = 0;
 			$this->fields['id']->setElementHelper('formNotEdit');
 		}
 		

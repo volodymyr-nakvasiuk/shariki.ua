@@ -20,4 +20,38 @@
 			</td>
 		</tr>
 	</table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="gallery_content"><tr>
+		<td width="40px">
+			<a class="prev browse left"></a>
+		</td>
+		<td>
+			<div class="scrollable">
+				<div class="items">
+					<div class="item_box">
+						<table cellspacing="0" cellpadding="10" border="0" width="100%" class="slider_item"><tr>
+<?php
+						$c=0; $k=0;
+	foreach ($this->gallery as $photo){
+		$c++;$k++;
+		if ($c>4){
+			$c=1;
+			echo '</tr></table></div><div class="item_box"><table cellspacing="0" cellpadding="10" border="0" width="100%" class="slider_item"><tr>';
+		}
+		if ($k>2){
+			$k=1;
+			echo '</tr><tr>';
+		}
+		echo '<td><div class="item_content"><div class="item_photo"><a title="'.$photo['photos_title'].'" class="lightbox_img" href="/uploads/images/news/'.$photo['photos_parent_id'].'/big/'.$photo['photos_name'].'"><img src="/uploads/images/news/'.$photo['photos_parent_id'].'/small/'.$photo['photos_name'].'" /></a></div><div class="item_title">'.$photo['photos_title'].'</div></div></td>';
+	}
+	?>
+						</tr></table>
+					</div>
+				</div>
+			</div>
+		</td>
+		<td width="40px">
+			<a class="next browse right"></a>
+		</td>
+	</tr></table>
 </div>

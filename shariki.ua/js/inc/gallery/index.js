@@ -1,4 +1,4 @@
-js.module("inc.services.detail");
+js.module("inc.gallery.index");
 js.include("jquery.min");
 js.include("jquery.scrollable");
 js.include("jquery.lightbox");

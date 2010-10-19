@@ -1,0 +1,20 @@
+<?php
+	$flashvars = array();
+	$flashvars[] = 'imagesHost='.$this->imagesHost;
+	$flashvars[] = 'uploadURL='.$this->uploadUrl;
+	$flashvars[] = 'uploadFileName='.$this->uploadFileName;
+	$flashvars[] = 'maxFileSize='.$this->maxFileSize;
+	$flashvars[] = 'fileTypes='.$this->fileTypes;
+	$flashvars[] = 'uploadParams='.$this->uploadParams;
+?>
+<object width="369" height="262" type="application/x-shockwave-flash" data="/cms/swf/q_file_uploader.swf" style="visibility: visible;"> 
+	<param name="menu" value="menu"/> 
+	<param name="Movie" value="/cms/swf/q_file_uploader.swf"/> 
+	<param name="Src" value="/cms/swf/q_file_uploader.swf"/>
+	<param name="quality" value="high"/> 
+	<param name="scale" value="noscale"/>
+	<param name="salign" value="TL"/>
+	<param name="wmode" value="transparent"/> 
+	<param name="oop" value="false"/>
+	<param name="flashvars" value="<?php echo implode('&',$flashvars);?>">
+</object>

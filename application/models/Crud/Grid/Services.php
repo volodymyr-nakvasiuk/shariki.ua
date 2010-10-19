@@ -7,7 +7,7 @@ class Crud_Grid_Services extends ArOn_Crud_Grid {
 	public $editAction = 'services';
 
 	public function init() {
-		$this->trash = false;
+		$this->trash = true;
 		$this->gridTitle = 'Услуги';
 
 		$this->gridActionName = 'services';

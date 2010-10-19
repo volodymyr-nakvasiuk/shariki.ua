@@ -7,7 +7,7 @@ class Crud_Grid_News extends ArOn_Crud_Grid {
 	public $editAction = 'news';
 
 	public function init() {
-		$this->trash = false;
+		$this->trash = true;
 		$this->gridTitle = 'Новости';
 
 		$this->gridActionName = 'news';

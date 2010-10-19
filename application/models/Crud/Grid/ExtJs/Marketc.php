@@ -11,14 +11,15 @@ class Crud_Grid_ExtJs_Marketc extends ArOn_Crud_Grid_ExtJs {
 		$this->trash = false;
 		$this->gridTitle = 'Розничная торговля - Категории';
 
+		$this->formClass = 'Crud_Form_ExtJs_Marketc';
+
 		$this->gridActionName = 'marketc';
 		$this->table = "Db_Marketc";
-		
 		$this->fields = array(
 			'marketc_id' => new ArOn_Crud_Grid_Column_Default("Id",null,true,false,'50'),
 			'marketc_img' => new ArOn_Crud_Grid_Column_Image('Изображение',null,true,false,'100','/uploads/images/market_cat/{marketc_id}/small/{marketc_img}'),
 			'marketc_title' => new ArOn_Crud_Grid_Column_Default("Название",null,true,false,'100'),
-			'marketc_order' => new ArOn_Crud_Grid_Column_Default("Сортировка",null,true,false,'50'),
+			'marketc_order' =>  new ArOn_Crud_Grid_Column_FormColumnExtJs("Сортировка", 'marketc_order', true, array(), '50'),
 			'marketd' => new ArOn_Crud_Grid_Column_JoinMany('Товары','Db_Marketd',null,null,', ',5, '100')
 		);
 		$this->fields['marketd']->setAction ('marketd','parent');

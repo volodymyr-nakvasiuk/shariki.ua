@@ -4,10 +4,11 @@ class Crud_Grid_ExtJs_News extends ArOn_Crud_Grid_ExtJs {
 	protected $_idProperty = 'news_id';
 	public $sort = "news_created_date";
 	public $direction = "DESC";
-	public $editAction = 'news';
+	public $editController = 'grid';
+	public $editAction = 'news-tab';
 
 	public function init() {
-		$this->trash = false;
+		$this->trash = true;
 		$this->gridTitle = 'Новости';
 
 		//$this->formClass = 'Crud_Form_ExtJs_News';
