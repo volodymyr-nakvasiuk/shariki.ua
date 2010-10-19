@@ -112,6 +112,12 @@ MyDesktop = new Ext.app.App({
 					icon:'bogus'
 				}),
 				new Ext.app.Module({
+					id:'sample-win-ckfinder',
+					title:'Файловый менеджер',
+					url:'/cms/window/ckfinder',
+					icon:'comp'
+				}),
+				new Ext.app.Module({
 					id:'grid-win-indexmenu',
 					title:'Меню на главной',
 					url:'/cms/grid/indexmenu',
@@ -216,7 +222,7 @@ MyDesktop = new Ext.app.App({
 				},
 				{
 					text:'СEO',
-					iconCls:'bogus',
+					iconCls:'folder',
 					handler:function() {
 						return false;
 					},
@@ -231,7 +237,7 @@ MyDesktop = new Ext.app.App({
 				},
 				{
 					text:'Права доступа',
-					iconCls:'bogus',
+					iconCls:'folder',
 					handler:function() {
 						return false;
 					},
@@ -247,7 +253,8 @@ MyDesktop = new Ext.app.App({
 				},
 				//this.getModule('grid-win-client').launcher,
 				//this.getModule('grid-win-ip2country').launcher,
-				this.getModule('grid-win-shortcuts').launcher
+				this.getModule('grid-win-shortcuts').launcher,
+				this.getModule('sample-win-ckfinder').launcher
 			]
 	},
 	getStartConfig :function(){

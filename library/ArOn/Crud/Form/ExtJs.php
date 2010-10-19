@@ -15,9 +15,19 @@ class ArOn_Crud_Form_ExtJs extends ArOn_Crud_Form {
 	protected $_width = 0;
 	protected $_height = 0;
 	protected $_is_associated = false;
-	
+
+	public function setTitle($title) {
+		$this->_title = $title;
+		return $this;
+	}
+
+	public function setItemVar($name, $append=false) {
+		$this->_item_var = $append?$this->_item_var.$name:$name;
+		return $this;
+	}
+
 	public function init() {
-		parent::init();		
+		parent::init();
 	}
 	
 	public function makeAssociated(){
@@ -26,7 +36,7 @@ class ArOn_Crud_Form_ExtJs extends ArOn_Crud_Form {
 	}
 	
 	public function createForm(){
-		parent::createForm();		
+		parent::createForm();
 		
 		$this->_form_id = "form-win-".$this->actionName;
 		if ($this->_main_grid){
@@ -41,7 +51,7 @@ class ArOn_Crud_Form_ExtJs extends ArOn_Crud_Form {
 		
 		if(!empty($this->actionId)) $this->_form_id .= "-".$this->actionId;
 	}
-	
+
 	private $_formTemplatePrefix = 'ArOn_Crud_Form_ExtJs_';
 
 	public function setRegion($region){
@@ -71,7 +81,7 @@ class ArOn_Crud_Form_ExtJs extends ArOn_Crud_Form {
 							var desktop = " . $this->_ExjDestopName . ".getModule('" . $this->_grid_id . "').app.getDesktop();
 							var win = desktop.getWindow('" . $this->_form_id . "');
 							var win_height = 430;
-				    		var client_height = 480;
+							var client_height = 480;
 							if (parseInt(navigator.appVersion)>3) {
 			 					if (navigator.appName==\"Netscape\") {
 									client_height = window.innerHeight;
@@ -96,7 +106,7 @@ class ArOn_Crud_Form_ExtJs extends ArOn_Crud_Form {
 									iconCls:'bogus',
 									animCollapse:false,
 									constrainHeader:true,
-				    				shim:false,
+									shim:false,
 									items: " . $this->getItem() .  ",
 									forceLayout: true,
 									layout:'fit'
@@ -115,16 +125,24 @@ class ArOn_Crud_Form_ExtJs extends ArOn_Crud_Form {
 	}
 
 	public function renderCore (){
+		$phpData = array(
+			'actionName'=>$this->actionName,
+			'_ExjDestopName'=>$this->_ExjDestopName,
+			'_grid_id'=>$this->_grid_id,
+			'_parent_grid_id'=>($this->_parent_grid_id?$this->_parent_grid_id:$this->_grid_id),
+			'_form_id'=>$this->_form_id,
+		);
 		$html = "var " . $this->getItem() . " = new Ext.FormPanel({
+					phpData: ".Zend_Json_Encoder::encode($phpData).",
 					title:'" . $this->_title . "',
 					region: '".$this->_region."',
-			    	labelWidth: 150,
-			    	id: 'form-".$this->actionName."-".$this->actionId."',
-			    	name: 'form-".$this->actionName."-".$this->actionId."',
-			    	frame: true,
-			    	autoScroll: true,
-			    	bodyStyle:'padding:5px 5px 0',
-			    	border:false,
+					labelWidth: 150,
+					id: 'form-".$this->_item_var."-".$this->actionId."',
+					name: 'form-".$this->_item_var."-".$this->actionId."',
+					frame: true,
+					autoScroll: true,
+					bodyStyle:'padding:5px 5px 0',
+					border:false,
 				";
 
 		if ($this->getAttrib ( 'enctype') == 'multipart/form-data'){
@@ -143,9 +161,9 @@ class ArOn_Crud_Form_ExtJs extends ArOn_Crud_Form {
 			if($element->getAttrib('width') > $this->_width) $this->_width = $element->getAttrib('width');
 			$extjsFormItems[] = $extjsFormItem->render();
 		}
-		$html .= "items: [ " . implode(", ",$extjsFormItems) . "], ";
+		$html .= "items: [ " . implode(", ",$extjsFormItems) . "]";
 
-		if($this->_width > 0) $this->_width += 230;		
+		if($this->_width > 0) $this->_width += 230;
 		
 		$html .= $this->renderButtons();
 		$html .= "});";
@@ -154,63 +172,63 @@ class ArOn_Crud_Form_ExtJs extends ArOn_Crud_Form {
 	}
 	
 	protected function renderButtons(){
-		$html = "";
+		$html = ",";
 		$html .= "
-					    buttons: [{
-				    	    text: 'Сохранить',
-				    	    handler: function(){
-				    	    	var form = " . $this->getItem() . ".getForm();
-					    		if(form.isValid()){
-					    			form.submit({
-					    				url:'/" . self::$ajaxModuleName . "/form/" . $this->actionName . "/save',
-					                    waitMsg: 'Загрузка...',
-					                    waitTitle: 'Пожалуйста подождите...',
-					                    failure: function (form, action){
-					                    	if (action.result.message)
-					                    		Ext.MessageBox.alert('Ошибка', action.result.message);
-					                    	else
-					                    		Ext.MessageBox.alert('Ошибка', 'На сервере произошла ошибка, либо сервер недоступен');
-					                    },
-				                    	success: function (){
-					                    	Ext.MessageBox.hide();
-					                    	var desktop = " . $this->_ExjDestopName . ".getModule('" . $this->_grid_id . "').app.getDesktop();
-					                    	var win = desktop.getWindow('" . ($this->_parent_grid_id?$this->_parent_grid_id:$this->_grid_id) . "');
-					                    	if (win){
-						                    	var items = win.items;
-						                    	var i;
-						                    	for (i=0;i<items.getCount();i++){
-						                    		var xtype = items.get(i).getXType();
-						                    		if (xtype == 'editorgrid' || xtype == 'grid'){
-						                    			items.get(i).getStore().reload();
-						                    		}
-						                    		if (xtype = 'tabpanel'){
-			                    						var tabs = items.get(i).items;
-			                    						var j;
-			                    						for (j=0;j<tabs.getCount();j++){
-			                    							var tabxtype = tabs.get(j).getXType();
-			                    							if (tabxtype == 'editorgrid' || tabxtype == 'grid'){
-			                    								tabs.get(j).getStore().reload();
-			                    							}
-			                    						}
-			                    					}
-						                    	}
-					                    	}
+						buttons: [{
+							text: 'Сохранить',
+							handler: function(){
+								var form = " . $this->getItem() . ".getForm();
+								if(form.isValid()){
+									form.submit({
+										url:'/" . self::$ajaxModuleName . "/form/" . $this->actionName . "/save',
+										waitMsg: 'Загрузка...',
+										waitTitle: 'Пожалуйста подождите...',
+										failure: function (form, action){
+											if (action.result.message)
+												Ext.MessageBox.alert('Ошибка', action.result.message);
+											else
+												Ext.MessageBox.alert('Ошибка', 'На сервере произошла ошибка, либо сервер недоступен');
+										},
+										success: function (){
+											Ext.MessageBox.hide();
+											var desktop = " . $this->_ExjDestopName . ".getModule('" . $this->_grid_id . "').app.getDesktop();
+											var win = desktop.getWindow('" . ($this->_parent_grid_id?$this->_parent_grid_id:$this->_grid_id) . "');
+											if (win){
+												var items = win.items;
+												var i;
+												for (i=0;i<items.getCount();i++){
+													var xtype = items.get(i).getXType();
+													if (xtype == 'editorgrid' || xtype == 'grid'){
+														items.get(i).getStore().reload();
+													}
+													if (xtype = 'tabpanel'){
+														var tabs = items.get(i).items;
+														var j;
+														for (j=0;j<tabs.getCount();j++){
+															var tabxtype = tabs.get(j).getXType();
+															if (tabxtype == 'editorgrid' || tabxtype == 'grid'){
+																tabs.get(j).getStore().reload();
+															}
+														}
+													}
+												}
+											}
 											var win = desktop.getWindow('" . $this->_form_id . "');
 											win.close();
-					                    }
-					                });
-				                }
-					    	}
-				    	},{
-				        	text: 'Закрыть',
-				        	handler: function(){
-					        	var desktop = " . $this->_ExjDestopName . ".getModule('" . $this->_grid_id . "').app.getDesktop();
+										}
+									});
+								}
+							}
+						},{
+							text: 'Закрыть',
+							handler: function(){
+								var desktop = " . $this->_ExjDestopName . ".getModule('" . $this->_grid_id . "').app.getDesktop();
 								var win = desktop.getWindow('" . $this->_form_id . "');
 								win.close();
 								
-				        	}
-				    	}]
-				    	";
+							}
+						}]
+						";
 		return $html;
 	}
 	

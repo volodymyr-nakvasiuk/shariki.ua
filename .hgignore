@@ -15,3 +15,5 @@ syntax: regexp
 ^access\.log$
 syntax: regexp
 ^error\.log$
+syntax: regexp
+^.idea$

@@ -8,7 +8,7 @@ class ArOn_Crud_Form extends Zend_Form {
 	/**
 	 * @var ArOn_Db_Table
 	 */
-	protected $_model;
+	public $_model;
 
 	public $groups = array ();
 
@@ -21,6 +21,8 @@ class ArOn_Crud_Form extends Zend_Form {
 	protected $groupNames = array ();
 
 	public $actionId;
+
+	public $rowCount;
 
 	protected $_data = array ();
 	protected $_load_data = array();
@@ -65,9 +67,9 @@ class ArOn_Crud_Form extends Zend_Form {
 
 	public function __construct($actionId = null, $filter_params = false, $template = false , $options = null, $action = null, $decorate = true , $decorateClass = 'ArOn_Crud_Form_Decorator_Admin') {
 		$this->actionId = $actionId;
-		$this->filterParams = $filter_params;		
+		$this->filterParams = $filter_params;
 		$this->_decorate = $decorate;
-		$this->template = $template;		
+		$this->template = $template;
 		if($this->_decorate) {
 			$this->_decorateClass = new $decorateClass ( );
 		}
@@ -162,7 +164,7 @@ class ArOn_Crud_Form extends Zend_Form {
 
 		$this->updateForm ();
 
-		$this->setAction ( $this->action )->setMethod ( $this->method );				
+		$this->setAction ( $this->action )->setMethod ( $this->method );
 		$this->setData ( false, $this->_isLoadData );
 		$this->_isLoadData = false;
 		if($this->filterParams)

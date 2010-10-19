@@ -12,7 +12,6 @@ class Cms_JsonController extends Abstract_Controller_CmsController {
 	}
 	
 	public function __call($function,$params){
-
 		$count = preg_match('/(.*?)Action/',$function,$matches);
 		if ($count) {
 			$parent_id = $this->_request->getParam('parent_id');
@@ -21,25 +20,33 @@ class Cms_JsonController extends Abstract_Controller_CmsController {
 				return true;
 			}
 			$classname = 'Db_'.ucfirst($matches[1]);
-			if(strpos($classname,'Acl') !== false){
+			if(strpos($classname,'Acl_') !== false){
 				$name = ucfirst($matches[1]);
 				$t = $matches[1] [3];
 				
-				$name = str_replace('Acl'.$t,'Acl_'.ucfirst($t),$name);
+				$name = str_replace('Acl_'.$t,'Acl_'.ucfirst($t),$name);
 				$classname = 'Crud_Grid_ExtJs_'.ucfirst($name);
 				$grid = new $classname (null,array('parent' => $parent_id));
 				$grid->setLimit(1000);
 				$data = $grid->getData();
 				$model = $grid->getModel();
 				echo $this->generateJson($data['data'],$model);
-				return true;				
+				return true;
 			}
 			if(!class_exists($classname)) return false;
 			$model = new $classname();
 			$select = $model->select();
 			$parent_key = (array_key_exists($matches[1], $this->parent_ids)) ? $this->parent_ids [$matches[1]] : 'parent_id';
 			$select->where($parent_key . ' = ?',$parent_id);
-			$select->order($model->getOrderExpr());
+			$order_exp = $model->getOrderExpr();
+			$order_asc = $model->getOrderAsc();
+			foreach ($order_exp as $i => &$key){
+				if ($order_asc[$i]) $direction = 'ASC';
+				else $direction = 'DESC';
+				$key = $model->getTableName().'.'.$key.' '.$direction;
+			}
+			$select->reset(ArOn_Db_TableSelect::ORDER)->order($order_exp);
+			//echo $select->__toString();exit;
 			$data = $model->fetchAll($select);
 			echo $this->generateJson($data,$model);
 			return true;

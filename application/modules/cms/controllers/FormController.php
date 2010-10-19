@@ -59,7 +59,7 @@ class Cms_FormController extends Abstract_Controller_CmsController {
 				
 					if($this->_form->isValid($params)){
 						$id = $this->_form->saveValidData();
-						if(is_array($id) && array_key_exists('error',$id)){							
+						if(is_array($id) && array_key_exists('error',$id)){
 							echo '{success: false, message: "'.$id['error'].'"}';
 							$id = false;
 						}else{

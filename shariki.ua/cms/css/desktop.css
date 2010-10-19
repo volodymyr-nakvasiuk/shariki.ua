@@ -54,6 +54,26 @@ div.admin_body_box {
 	background-image: url(/cms/images/bogus.png ) !important;
 }
 
+.folder {
+	background-image: url(/cms/images/icons/fam/folder_go.png ) !important;
+}
+
+.setup {
+	background-image: url(/cms/images/icons/fam/folder_wrench.png ) !important;
+}
+
+.lang {
+	background-image: url(/cms/images/icons/fam/user_comment.png ) !important;
+}
+
+.geo {
+	background-image: url(/cms/images/icons/fam/geo.gif ) !important;
+}
+
+.comp {
+	background-image: url(/cms/images/icons/comp.png ) !important;
+}
+
 .logout {
 	background-image: url(/cms/images/logout.gif ) !important;
 }
@@ -291,7 +311,7 @@ div.admin_body_box {
 }
 
 .x-window-maximized .x-window-bc {
-	height: 0;
+	/*height: 0;*/
 }
 
 .icon-grid {

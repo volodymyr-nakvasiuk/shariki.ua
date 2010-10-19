@@ -19,7 +19,7 @@ class ArOn_Crud_Form_ExtJs_Hidden extends ArOn_Crud_Form_ExtJs_Element {
 		$html = " new Ext.form.Hidden({
 			name: '" . $this->_name . "',
 			//id: '" . $this->_id . "',
-            value: '" . $this->_value . "'
+			value: '" . $this->_value . "'
 		})";
 		return $html;
 	}

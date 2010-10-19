@@ -139,7 +139,7 @@ class ArOn_Db_TableSelect extends Zend_Db_Table_Select {
 		$joinPath = $this->_table->getJoinPath ( $path );
 
 		$current_table = $this->_alias;
-		if(is_array($joinPath))			
+		if(is_array($joinPath))
 		foreach ( $joinPath as $rule => &$ref ) {
 			if (isset ( $ref ['reverse'] ))
 			return;
@@ -169,7 +169,7 @@ class ArOn_Db_TableSelect extends Zend_Db_Table_Select {
 	}
 
 	public function getRowCount() {
-		$select = clone $this;		
+		$select = clone $this;
 		$select->reset ( self::COLUMNS );
 		$select->reset ( self::LIMIT_COUNT );
 		$select->reset ( self::LIMIT_OFFSET );
@@ -181,19 +181,19 @@ class ArOn_Db_TableSelect extends Zend_Db_Table_Select {
 		}
 		try {
 			$select->reset ( self::FROM );
-			$select->from($this->_table->getTableName(),array('count' => 'count(*)'));			
+			$select->from($this->_table->getTableName(),array('count' => 'count(*)'));
 			$result = $this->_table->fetchRow ( $select );
 			$count = ($result === null) ? 0 : $result->count;
 		}catch (Exception $e){
-			$select_catch->from(null,array('count' => 'count(*)'));			
+			$select_catch->from(null,array('count' => 'count(*)'));
 			$result = $this->_table->fetchRow ( $select_catch );
 			$count = ($result === null) ? 0 : (int) $result->count;
 		}
 		return $count;
 	}
 
-	public function orderNatural($reverse = false) {		
-		$direction = $this->_table->getOrderAsc ();					
+	public function orderNatural($reverse = false) {
+		$direction = $this->_table->getOrderAsc ();
 		if ($order = $this->_table->getOrderExpr ()){
 			if(!is_array($order)) $order = array($order);
 			if(!is_array($direction)) $direction = array($direction);
@@ -278,7 +278,7 @@ class ArOn_Db_TableSelect extends Zend_Db_Table_Select {
 
 	public function removeDuplicateColumns() {
 		$columns = array ();
-		foreach ( $this->_parts [self::COLUMNS] as $id => $col ) {			
+		foreach ( $this->_parts [self::COLUMNS] as $id => $col ) {
 			if(null === $col [2] && $col[1] instanceof Zend_Db_Expr){
 				$columns [] = $col;
 			}else{

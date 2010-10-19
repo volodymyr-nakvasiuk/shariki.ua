@@ -7,7 +7,8 @@ class ArOn_Crud_Grid_Column_JoinOne extends ArOn_Crud_Grid_Column {
 	protected $_rules;
 	protected $_tableField;
 	protected $_tableFields;
-	protected $_na = "---";
+	protected $_na = "-";
+	public $options = false;
 
 	function __construct($title, $rules = null, $tableField = null, $tableFields = null, $hidden = false, $width = 120) {
 		parent::__construct ( $title , true, $hidden, $width);
@@ -29,10 +30,15 @@ class ArOn_Crud_Grid_Column_JoinOne extends ArOn_Crud_Grid_Column {
 			$this->row_id = $row [$this->key . "_id"];
 			$value = $this->createActionLink ( $value, @$row [$this->gridTitleField] );
 		}
+		if ($this->options && $value) {
+			if (isset($this->options [$value] )) {
+				$value = $this->options [$value];
+			}
+		}
 		return $value ? $value : $this->_na;
 	}
 	
-	public function setEmptyValue($na = '---'){
+	public function setEmptyValue($na = '-'){
 		$this->_na = $na;
 		return $this;
 	}

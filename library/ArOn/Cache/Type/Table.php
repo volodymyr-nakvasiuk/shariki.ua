@@ -85,7 +85,7 @@ class ArOn_Cache_Type_Table extends ArOn_Cache_Type_Abstract{
 	   		if(in_array($method , $non_cached_methods) && ($this->_options['cache_autoclean'] == 1)){
 		   		$this->_cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG,array($class));
 		   	}
-	   		$this->_cache->setTagsArray(array($class,$method));		   	
+	   		$this->_cache->setTagsArray(array($class,$method));
 	        $caller = Array($this->_cache, $method);
 	        return call_user_func_array($caller, $args);
 	   }

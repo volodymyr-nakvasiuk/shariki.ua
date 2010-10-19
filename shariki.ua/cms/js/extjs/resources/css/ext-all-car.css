@@ -4800,7 +4800,7 @@ a.x-menu-item {
 }
 
 .x-window-maximized .x-window-footer {
-	padding-bottom: 0;
+	/*padding-bottom: 0;*/
 }
 
 .x-window-maximized .x-window-tc {

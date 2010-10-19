@@ -17,7 +17,7 @@ class ArOn_Db_Table extends Zend_Db_Table {
 	protected $_aclWhere;
 	protected $_aclPath;
 	
-	protected $_duplicate_extinsion = array();
+	protected $_duplicate_extension = array();
 	
 	/**
 	 * 
@@ -146,7 +146,7 @@ class ArOn_Db_Table extends Zend_Db_Table {
 		if ($rule instanceof ArOn_Db_Table)
 		$rule = get_class ( $rule );
 		if ($rule instanceof ArOn_Cache_Type_Table)
-		$rule = $rule->getClass();
+			$rule = $rule->getClass();
 		// get direct reference from reference map
 		if (isset ( $this->_referenceMap [$rule] )) {
 			$ref = &$this->_referenceMap [$rule];
@@ -214,14 +214,13 @@ class ArOn_Db_Table extends Zend_Db_Table {
 	}
 
 	public function select($alias = null) {
-
 		$select = new ArOn_Db_TableSelect ( $this, $alias );
 		$alias = $select->getAlias ();
 		if ($this->_where) {
 			$select->where ( $this->applyAlias ( $this->_where, $alias ) );
 		}
 		$select = $this->_setAcl($select);
-		if ($this->_order_expr){						
+		if ($this->_order_expr){
 			if(!is_array($this->_order_expr)) $this->_order_expr = array($this->_order_expr);
 			if(!is_array($this->_order_asc)) $this->_order_asc = array($this->_order_asc);
 			foreach ($this->_order_expr as $i => $key){
@@ -339,22 +338,21 @@ class ArOn_Db_Table extends Zend_Db_Table {
 	
 	public function duplicate($ids,$extension = null){
 		if(!is_array($ids)) {
-			$ids = array($ids);			
+			$ids = array($ids);
 		}
 		if(!is_array($this->_duplicate_extension)) {
-			$this->_duplicate_extension = array($this->_duplicate_extension);			
+			$this->_duplicate_extension = array($this->_duplicate_extension);
 		}
 		$cols = $this->_getCols();
 		$select = $this->select();
 		$select->where( $this->getPrimary() . ' IN (' . implode(',', $ids ) . ')');
-		$extension = (null !== $extension) ? array_merge($extension,$this->_duplicate_extension) : 	$this->_duplicate_extension;
+		$extension = (null !== $extension) ? array_merge($extension,$this->_duplicate_extension) : $this->_duplicate_extension;
 		$extension[] = $this->getPrimary();
 		$cols = array_diff($cols,$extension);
 		$select->columns($cols);
 		$data = $this->fetchAll($select);
 		foreach ($data as $row){
 			$insert_data = $row->toArray();
-			unset( $insert_data[$key] );
 			$this->insert($insert_data);
 		}
 		return true;
@@ -424,9 +422,10 @@ class ArOn_Db_Table extends Zend_Db_Table {
 	} 
 	// backward compatibility functions
 	public function getRowById($id) {
-		$is_deleted = $this->_is_deleted; 
+		$is_deleted = $this->_is_deleted;
 		$this->_is_deleted = false;
-		$res = $this->find ( $id )->current ();
+		$res = call_user_func_array(array($this, "find"), is_array($id)?$id:array($id))->current ();
+		//$res = $this->find ( $id )->current ();
 		$this->_is_deleted = $is_deleted;
 		return ($res) ? $res->toArray () : array ();
 	}
@@ -487,7 +486,7 @@ class ArOn_Db_Table extends Zend_Db_Table {
 		}
 		if(!empty($aclPath)){
 			$result = $this->getJoinPath($aclPath);
-			$rule = array_pop($result);		
+			$rule = array_pop($result);
 			$select->columnsJoinOne ( $aclPath, $aclColumn );
 		}else{
 			$refTableClass = $this->_name;
@@ -520,7 +519,7 @@ class ArOn_Db_Table extends Zend_Db_Table {
 		if (! empty ( self::$authId ) && ! empty ( $this->_aclColumn ) && ( empty($this->_aclPath) || $this->_aclPath == $this->_name)) {
 			$params = array (self::$authId);
 			$where = trim($where);
-			if(empty($where)){			
+			if(empty($where)){
 				$where  = $this->_aclColumn ." = ".self::$authId;
 			}else{
 				$where  .= " AND " . $this->_aclColumn ." = ".self::$authId;

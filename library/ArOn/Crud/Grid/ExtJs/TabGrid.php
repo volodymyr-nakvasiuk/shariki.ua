@@ -40,12 +40,12 @@ class ArOn_Crud_Grid_ExtJs_TabGrid extends ArOn_Crud_Grid {
 
 		$items = array();
 		foreach ($this->_tabs as $item){
-			if($item instanceof ArOn_Crud_Form_ExtJs){				
+			if($item instanceof ArOn_Crud_Form_ExtJs){
 				$item->createForm();
 				$item->setFormId($this->_win_id);
 				$item->setGridId("grid-win-".$this->ajaxActionName);
 			}
-			$item_html = $item->renderCore();			
+			$item_html = $item->renderCore();
 			$html .= $item_html;
 			$items[] = $item->getItem();
 			if($item->getGridWidth() > $this->_width) $this->_width = $item->getGridWidth();
@@ -57,11 +57,28 @@ class ArOn_Crud_Grid_ExtJs_TabGrid extends ArOn_Crud_Grid {
 	    	init: function() {
 	    		var desktop = MyDesktop.getModule('grid-win-" . $this->ajaxActionName . "').app.getDesktop();
 	    		var win = desktop.getWindow('" . $this->_win_id . "');
+	    		var win_height = 430;
+				var client_height = 480;
+				if (parseInt(navigator.appVersion)>3) {
+					if (navigator.appName==\"Netscape\") {
+						client_height = window.innerHeight;
+					}
+					if (navigator.appName.indexOf(\"Microsoft\")!=-1) {
+						client_height = document.body.offsetHeight;
+					}
+				}
+				client_height = client_height - 80;
+				if (client_height < win_height){
+					win_height = client_height;
+				}
+				if (win_height<200){
+					win_height = 200;
+				}
 	    		if(!win){
 	    			win = desktop.createWindow({
 	    				id:'" . $this->_win_id . "',
 	    				title:'" . $this->gridTitle . "',
-	    				height:550,
+	    				height:win_height,
 	    				width:" . $this->_width . ",
 	    				iconCls:'tabs',
 	    				shim:false,
@@ -71,11 +88,17 @@ class ArOn_Crud_Grid_ExtJs_TabGrid extends ArOn_Crud_Grid {
 	    				forceLayout: true,
 	    				items: [
 	    					new Ext.TabPanel({
+	    						listeners:{
+									render: function(obj){
+										for (var i=0;i<".count($items).";i++) obj.setActiveTab(i);
+										obj.setActiveTab(0);
+									}
+								},
 	    						activeTab: 0,
 	    						region: '".$this->_region."',
         						items: [".implode(', ', $items)."]
 							})
-						]
+						]".$this->renderButtons()."
 	    			});
 	    		}
 	    		Ext.get('loading').hide();
@@ -90,6 +113,11 @@ class ArOn_Crud_Grid_ExtJs_TabGrid extends ArOn_Crud_Grid {
 
 		return $html;
 
+	}
+
+	protected function renderButtons(){
+		$html = "";
+		return $html;
 	}
 	
 	public function getWinId(){

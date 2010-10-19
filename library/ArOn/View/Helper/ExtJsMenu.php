@@ -323,7 +323,7 @@ class ArOn_View_Helper_ExtJsMenu
 		$script[] = "getMenuConfig :function(){	return         " . $menuConfig . "}";
         $script[] = "getStartConfig :function(){
 					return {
-						title:'CAR.UA - Menu',
+						title:'SHARIKI.UA - Menu',
 						iconCls:'user',
 						toolItems:[{
 							text:'На главную',

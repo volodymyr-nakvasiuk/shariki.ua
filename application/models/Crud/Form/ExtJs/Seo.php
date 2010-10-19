@@ -52,7 +52,6 @@ class Crud_Form_ExtJs_Seo extends ArOn_Crud_Form_ExtJs
 		 'model' => 'Db_controller',
 		 'category' => array('Db_Emark')
 		 );*/
-		 
 		if(!empty($this->actionId)){
 			$model = Db_SiteActs::getInstance();
 			$action = $model->fetchRow($model->getPrimary()." = ".$this->_data ['seo_action_id']);

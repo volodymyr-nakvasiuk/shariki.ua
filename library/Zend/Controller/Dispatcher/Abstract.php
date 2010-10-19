@@ -116,7 +116,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      */
     public function formatActionName($unformatted)
     {
-        $formatted = $this->_formatName($unformatted, true);
+        $formatted = $this->_formatName($unformatted);
         return strtolower(substr($formatted, 0, 1)) . substr($formatted, 1) . 'Action';
     }
 

@@ -19,7 +19,7 @@ Ext.extend(Ext.ux.TaskBar, Ext.util.Observable, {
 			iconCls: 'user',
 			height: 300,
 			shadow: true,
-			title: 'Car.UA',
+			title: 'Shariki.UA',
 			width: 300
 		}, this.app.startConfig));
 		

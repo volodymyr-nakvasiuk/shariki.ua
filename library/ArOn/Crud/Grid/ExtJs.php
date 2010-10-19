@@ -22,7 +22,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 	protected $_gridWindowStatus = 'normal';
 	protected $_windowBlinking = false;
 	protected $_autoLoad = true;
-	protected $_renderFilters = true;	
+	protected $_renderFilters = true;
 	protected $_is_associated = false;
 	protected $_directionParameter = 'dir';
 	
@@ -46,11 +46,11 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 			'text'   =>'Удалить',
     		'tooltip'=>'Удалить выделенные записи',
 		),
-		'duplicate' => array(
-			'active' => true,
-			'text'   =>'Клонировать',
-    		'tooltip'=>'Клонировать выделенные записи',
-		),
+		//'duplicate' => array(
+		//	'active' => true,
+		//	'text'   =>'Клонировать',
+		//	'tooltip'=>'Клонировать выделенные записи',
+		//),
 	);
 	
 	public function setBaseParams($baseParams){
@@ -132,7 +132,7 @@ class ArOn_Crud_Grid_ExtJs extends ArOn_Crud_Grid {
 			}
 			$this->_width_coef = 580/($this->_width-20);
 			if ($this->_width_coef < 1){
-				$this->_width_coef = 1;			
+				$this->_width_coef = 1;
 			}
 			else {
 				$this->_window_width -= $this->_width;

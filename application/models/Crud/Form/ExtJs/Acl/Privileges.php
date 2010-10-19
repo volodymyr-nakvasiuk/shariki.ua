@@ -10,11 +10,11 @@ class Crud_Form_ExtJs_Acl_Privileges extends ArOn_Crud_Form_ExtJs
 		$this->actionName = 'acl-privileges';
 
 		$this->fields = array(
-        	'id' => new ArOn_Crud_Form_Field_Numeric('acl_privilege_id', 'Id', null, true) ,			
+        	'id' => new ArOn_Crud_Form_Field_Numeric('acl_privilege_id', 'Id', null, true) ,
 			'acl_module' => new ArOn_Crud_Form_Field_Many2One('acl_module_id','Модуль'),
         	'acl_resources' => new ArOn_Crud_Form_Field_Array2Select('acl_resource_id','Ресурс'),
 			'name' => new ArOn_Crud_Form_Field_Text('acl_privilege_name', 'Название', null, true),
-			//'acl-resources' => new ArOn_Crud_Form_Field_Many2One('acl_resource_id','Ресурс'),        	
+			//'acl-resources' => new ArOn_Crud_Form_Field_Many2One('acl_resource_id','Ресурс'),
 			'roles' => new ArOn_Crud_Form_Field_Many2Many('roles','Роли') 
 		);
 		

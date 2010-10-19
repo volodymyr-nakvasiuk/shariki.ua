@@ -34,7 +34,7 @@ class ArOn_Cache_Type_Abstract implements ArOn_Cache_Type_Interface {
 	
 	protected $_cacheDir = '/data/cache';
 	
-	public function __construct($object) {    	    
+	public function __construct($object) {
     	$this->_object = $object;
 		$this->setup();
 		$this->init();
@@ -49,8 +49,8 @@ class ArOn_Cache_Type_Abstract implements ArOn_Cache_Type_Interface {
 	protected function setup(){
 		$this->_initModel();
 		$this->_setSubject();
-		$this->_setCacheData();			
-		$this->_initCache();		
+		$this->_setCacheData();
+		$this->_initCache();
 	}
 		
 	protected function _initModel(){
@@ -63,30 +63,30 @@ class ArOn_Cache_Type_Abstract implements ArOn_Cache_Type_Interface {
 	protected function _setCacheData(){
 		$result = $this->_model->fetchAll();
 		if(!empty($result))
-			$this->_cache_data = $result->toArray();			
+			$this->_cache_data = $result->toArray();
 	}
 	
 	protected function _setSubject(){
 		$this->_subject = get_class($this->_object);
 	}
 	
-	protected function _initCache(){			
+	protected function _initCache(){
 		if($this->_findSubjectInCache() === false){
 			return false;
 		}		
 		$this->_setOptions();
-		$this->_setFrontendOptions();		
+		$this->_setFrontendOptions();
 		$this->_setBackend();
 		$this->_setCacher();
 	}
 	
 	protected function _findSubjectInCache(){
-		$lastKey = false;		
-		$lastMatchingRegexp = false;		
+		$lastKey = false;
+		$lastMatchingRegexp = false;
 		$subject = $this->_getSearchSubject();
 		foreach ($this->_cache_data as $key => $conf) {
 			$pattern = $conf ['cache_pattern'];
-            if ($this->_compare($conf ['cache_pattern_type'],$pattern,$subject)) {            	
+            if ($this->_compare($conf ['cache_pattern_type'],$pattern,$subject)) {
                 $lastMatchingRegexp = $pattern;
                 $lastKey = $key;
             }
