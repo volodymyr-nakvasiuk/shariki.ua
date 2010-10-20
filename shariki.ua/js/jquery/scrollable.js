@@ -32,7 +32,8 @@
 			speed: 400,
 			vertical: false,
 			touch: true,
-			wheelSpeed: 0
+			wheelSpeed: 0,
+			moveCount: 1
 		} 
 	};
 					
@@ -66,7 +67,7 @@
 		
 		// methods
 		$.extend(self, {
-				
+
 			getConf: function() {
 				return conf;	
 			},			
@@ -100,11 +101,11 @@
 			},
 			
 			next: function(time) {
-				return self.move(1, time);	
+				return self.move(conf.moveCount, time);
 			},
 			
 			prev: function(time) {
-				return self.move(-1, time);	
+				return self.move(-1*conf.moveCount, time);
 			},
 			
 			begin: function(time) {
@@ -237,13 +238,13 @@
 				setTimeout(function() {
 					if (!e.isDefaultPrevented()) {
 						prev.toggleClass(conf.disabledClass, i <= 0);
-						next.toggleClass(conf.disabledClass, i >= self.getSize() -1);
+						next.toggleClass(conf.disabledClass, i >= self.getSize() -conf.moveCount);
 					}
 				}, 1);
 			}); 
 			
 			if (!conf.initialIndex) {
-				prev.addClass(conf.disabledClass);	
+				prev.addClass(conf.disabledClass);
 			}
 		}
 			

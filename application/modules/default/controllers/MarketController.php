@@ -18,5 +18,8 @@ class MarketController extends Abstract_Controller_FrontendController {
 		$id = $this->_request->getParam('id');
 		$market = new Init_Market();
 		$this->view->data = $market->getTovData($id);
+
+		//$gallery = new Init_Gallery_Market($id);
+		//$this->view->gallery = $gallery->getData();
 	}
 }

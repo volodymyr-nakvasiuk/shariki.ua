@@ -10,7 +10,9 @@ $(function() {
 		$(".scrollable .items div.item_box").width(w);
 		$(".scrollable").show();
 	}).resize();
-	$(".scrollable").scrollable();
+	$(".scrollable").scrollable({
+		keyboard: false
+	});
 	$("a.lightbox_img").lightBox({
 		txtImage      : "Изображение",
 		txtOf         : "из",

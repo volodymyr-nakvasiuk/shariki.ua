@@ -15,6 +15,9 @@ class ServicesController extends Abstract_Controller_FrontendController {
 		$this->view->data = $services->getData();
 		$id = $this->_request->getParam('id');
 		$this->view->selectedId = $id?$id:$this->view->data['0']['services_id'];
+
+		$gallery = new Init_Gallery_Services($this->view->selectedId);
+		$this->view->gallery = $gallery->getData();
 		
 		$this->view->layouts['left']["left_menu"] = array('inc/menu/services', 100);
 	}

@@ -18,6 +18,7 @@ class Crud_Form_ExtJs_Marketd extends ArOn_Crud_Form_ExtJs
 		);
 		$this->fields['marketc']->model = 'Db_Marketc';
 		if(empty($this->actionId)){
+			$this->_alternative_data['is_deleted'] = 0;
 			unset($this->fields['id']);
 		}
 		else {

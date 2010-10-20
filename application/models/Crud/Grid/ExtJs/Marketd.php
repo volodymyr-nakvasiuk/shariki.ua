@@ -4,8 +4,9 @@ class Crud_Grid_ExtJs_Marketd extends ArOn_Crud_Grid_ExtJs {
 	protected $_idProperty = 'marketd_id';
 	public $sort = "marketd_order";
 	public $direction = "ASC";
-	public $editController = 'grid';
-	public $editAction = 'marketd-tab';
+	//public $editController = 'grid';
+	//public $editAction = 'marketd-tab';
+	public $editAction = 'marketd';
 
 	public function init() {
 		$this->trash = true;

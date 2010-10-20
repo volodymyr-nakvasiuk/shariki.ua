@@ -24,7 +24,6 @@ class NewsController extends Abstract_Controller_FrontendController {
 
 		$gallery = new Init_Gallery_News($this->view->selectedId);
 		$this->view->gallery = $gallery->getData();
-		//echo '<pre>';print_r($this->view->gallery);exit;
 		
 		$this->view->layouts['left']["left_menu"] = array('inc/menu/news', 100);
 	}
