@@ -17,8 +17,8 @@ $(function() {
 		$(".scrollable .items div.item_box").css('margin-left', mi+m+'px');
 		var api = $(".scrollable").data("scrollable");
 		api.getConf().moveCount = c;
-		api.seekTo(0,0);
 		$(".scrollable").show();
+		api.seekTo(0,0);
 	}).resize();
 	$("a.lightbox_img").lightBox({
 		txtImage      : "Изображение",

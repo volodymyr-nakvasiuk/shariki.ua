@@ -3,6 +3,7 @@ div.team_content_item {
 	float: left;
 	width: 240px;
 	margin: 0 25px 30px;
+	height:290px;
 }
 div.team_content_photo {
 	clear: both;
@@ -15,7 +16,7 @@ div.team_content_name {
 	float: none;
 	color: #e1418c;
 	font-size: 15px;
-	margin-top: 20px;
+	margin-top: 10px;
 	text-align: center;
 }
 div.team_content_text {
