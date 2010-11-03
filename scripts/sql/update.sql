@@ -45,3 +45,6 @@ CREATE TABLE IF NOT EXISTS `pphotos` (
   KEY `photos_parent_id` (`photos_parent_id`),
   KEY `photos_type` (`photos_type`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+#2010.11.03
+ALTER TABLE `marketc`  ADD COLUMN `marketc_descr` TEXT NULL COLLATE 'utf8_unicode_ci' AFTER `marketc_text`;

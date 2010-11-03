@@ -1,7 +1,14 @@
-h3.market_title{
-	font-size:17px !important;
-	color:#2d002d !important;
-	margin-left: 60px !important;
+.market_content {
+	clear:both;
+	float:none;
+}
+.market_content p{
+	margin: 20px 20px 0 0 !important;
+	text-align: justify !important;
+}
+.market_content h3{
+	font-size: 17px !important;
+	color: #2d002d !important;
 }
 .market_tov_box{
 	margin-top:20px;

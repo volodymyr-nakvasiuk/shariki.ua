@@ -1,4 +1,14 @@
-<h3 class="market_title"><?php echo $this->data[0]['marketc_title'];?></h3>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="market_content">
+	<tr>
+		<td valign="top" width="220px">
+			<img src="/uploads/images/market_cat/<?php echo $this->data[0]['marketc_id'];?>/middle/<?php echo $this->data[0]['marketc_img'];?>"/>
+		</td>
+		<td valign="top" style="padding-left:20px;">
+			<h3><?php echo $this->data[0]['marketc_title'];?></h3>
+			<?php echo $this->data[0]['marketc_descr'];?>
+		</td>
+	</tr>
+</table>
 <table cellspacing="0" cellpadding="0" border="0" width="100%" class="market_tov_box">
 	<tr>
 		<?php $i=1; foreach ($this->data as $item){$i++; ?>

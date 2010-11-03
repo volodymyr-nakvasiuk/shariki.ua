@@ -16,7 +16,6 @@
 	float:none;
 }
 .market_cat_item_box {
-	text-decoration:underline !important;
 	color:#2d002d !important;
 	font-size:15px !important;
 	margin-bottom: 20px !important;
@@ -33,5 +32,5 @@ div.market_cat_item_title {
 div.market_cat_item_text {
 	clear:both;
 	float:none;
-	margin-top:30px;
+	margin-top:10px;
 }

@@ -16,7 +16,10 @@ class Crud_Grid_Marketd extends ArOn_Crud_Grid {
 		
 		$this->fields = array(
 			'marketd_id' => new ArOn_Crud_Grid_Column_Default("Id",null,true,false,'50'),
-			'marketc_title' => new ArOn_Crud_Grid_Column_JoinOne("Категория",'Db_Marketc',null, null,false,'100'),
+			'marketc_title' => new ArOn_Crud_Grid_Column_JoinOne("Категория",'Db_Marketc','marketc_title', null,false,'100'),
+			'marketc_descr' => new ArOn_Crud_Grid_Column_JoinOne("Описание внутри категории",'Db_Marketc','marketc_descr',null,false,'100'),
+			'marketc_id' => new ArOn_Crud_Grid_Column_JoinOne("Id категории",'Db_Marketc','marketc_id',null,false,'100'),
+			'marketc_img' => new ArOn_Crud_Grid_Column_JoinOne("Изображение категории",'Db_Marketc','marketc_img',null,false,'100'),
 			'marketd_text' => new ArOn_Crud_Grid_Column_Default("Описание товара",null,true,false,'100'),
 			'marketd_img' => new ArOn_Crud_Grid_Column_Image('Изображение',null,true,false,'100','/uploads/images/market_tov/{marketd_id}/small/{marketd_img}'),
 			'marketd_order' => new ArOn_Crud_Grid_Column_Default("Сортировка",null,true,false,'50'),

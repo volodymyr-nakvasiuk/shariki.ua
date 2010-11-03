@@ -39,7 +39,8 @@ div.news_bottom{
 }
 div.news_subscribe{
 	clear: none;
-	float: left;
+	float: right;
+	margin-right: 20px;
 }
 div.news_subscribe span{
 	text-decoration: underline;
@@ -68,10 +69,21 @@ div.news_subscribe input.submit{
 }
 div.news_archive{
 	clear: none;
-	float: right;
-	margin-right: 20px;
+	float: left;
 }
 div.news_archive a{
 	text-decoration: underline;
 	color: #2d002d;
+}
+div.news_archive_img {
+	float: left;
+	clear:none;
+}
+div.news_archive_img img {
+	width:140px;
+}
+div.news_archive_title {
+	float: left;
+	clear:none;
+	margin:40px 0 0 20px;
 }
