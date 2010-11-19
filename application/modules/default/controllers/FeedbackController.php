@@ -11,6 +11,11 @@ class FeedbackController extends Abstract_Controller_FrontendController {
 	}
 	
 	public function detailAction(){
+		if (isset($_POST) && $_POST){
+			$feedback = new Tools_Feedback('djtheme@gmail.com');
+			$this->view->faq_error = $feedback->send($_POST);
+		}
+
 		$feedback = new Init_Feedback();
 		$this->view->data = $feedback->getData();
 		$id = $this->_request->getParam('id');

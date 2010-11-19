@@ -14,3 +14,104 @@ div.feedback_content h3{
 div.feedback_content img.feedback_photo{
 	margin: 0 55px 0 20px;
 }
+div.faq_form {
+	clear:both;
+	float:none;
+	width:50%;
+	min-width: 380px;
+	margin:20px auto 0;
+}
+div.faq_form_title {
+	width:100%;
+	clear:both;
+	float:none;
+	text-align:left;
+	font-size:24px;
+	margin-bottom:15px;
+}
+div.faq_form div.input_wraper{
+	clear: both;
+	float: none;
+	margin-top:5px;
+}
+div.faq_form div.faq_submit,
+div.faq_form div.faq_file{
+	clear: both;
+	float: none;
+	margin-top:10px;
+}
+div.faq_form div input{
+	background: url(/img/itput_bg.png) no-repeat;
+	padding:7px 10px;
+	width:358px;
+	border:medium none;
+}
+div.faq_form div.faq_file div.fileinputs {
+	position: relative;
+	width: 378px;
+}
+
+div.faq_form div.faq_file div.fakefile {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+div.faq_form div.faq_file input.file {
+	position: relative;
+	text-align: right;
+	-moz-opacity:0 ;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+	width:238px;
+	margin:3px 0;
+}
+div.faq_form div.faq_file input{
+	background: url(/img/file_bg.png) no-repeat;
+	padding:7px 10px;
+	width:188px;
+	clear:none;
+	float:left;
+}
+div.faq_form div.faq_file img {
+	clear:none;
+	float:left;
+	margin-left: 5px;
+}
+div.faq_form div input.sbmt{
+	background: url(/img/subm_btn_bg.png) no-repeat;
+	height:20px;
+	padding:0;
+	width:122px;
+	cursor: pointer;
+	border:medium none;
+}
+div.faq_form div textarea{
+	background: url(/img/tarea_bg.png) no-repeat;
+	height:47px;
+	padding:5px 10px;
+	width:358px;
+	border:medium none;
+}
+div.faq_form div.left{
+	clear: none;
+	float: left;
+}
+div.faq_form div.right{
+	clear: none;
+	float: right;
+}
+div.submenu_error_text, div.submenu_success_text {
+	clear: both;
+	float: none;
+	padding: 0;
+	margin: 20px 0;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	color: red;
+}
+div.submenu_success_text {
+	color:green;
+}
