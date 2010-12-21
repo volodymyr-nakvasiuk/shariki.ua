@@ -13,6 +13,11 @@ div.header_contacts_content {
 	text-align: right;
 	font-size: 15px;
 	margin-top: 20px;
+	font-weight:bold;
+}
+div.header_contacts_content span{
+	font-size: 12px;
+	font-weight:normal;
 }
 div.header_contacts_content p {
 	margin-top: 3px;

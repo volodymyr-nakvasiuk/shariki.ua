@@ -1,6 +1,6 @@
 <?php
-	foreach($this->data as $submenu){
-		$preTag = '<a href="/feedback/detail/'.$submenu['feedback_id'].'/">';
+	foreach($this->data['data'] as $submenu){
+		$preTag = '<a href="/feedback/detail/'.$submenu['feedback_id'].'/?p='.$this->page.'">';
 		$postTag = '</a>';
 		if ($submenu['feedback_id'] == $this->selectedId){
 			$preTag = '';

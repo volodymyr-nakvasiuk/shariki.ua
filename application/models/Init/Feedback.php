@@ -1,9 +1,12 @@
 <?php
 class Init_Feedback {
-	
+
+	protected $_onPage = 7;
 	protected $_data = false;
+	protected $_p = false;
 	
-	public function __construct(){
+	public function __construct($p=1){
+		$this->_p = $p;
 	}
 	
 	public function getData(){
@@ -12,9 +15,9 @@ class Init_Feedback {
 	}
 	
 	protected function _setData(){
-		$grid = new Crud_Grid_Feedback();
-		$grid->setLimit('all');
+		$grid = new Crud_Grid_Feedback(null, array('p'=>$this->_p));
+		$grid->setLimit($this->_onPage);
 		$data = $grid->getData();
-		$this->_data = $data['data'];
+		$this->_data = $data;
 	}
 }

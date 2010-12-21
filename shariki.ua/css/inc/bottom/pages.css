@@ -1,0 +1,22 @@
+div.search_pages {
+	clear:both;
+	float:left;
+	line-height:23px;
+	margin-left:20px;
+}
+div.search_pages span{
+	clear: none;
+	float: left;
+	color: #00AEFF;
+	margin-left: 5px;
+	font-weight: bold;
+}
+div.search_pages span img {
+	width: 11px;
+	height: 23px;
+}
+div.search_pages span a{
+	color: #2D002D;
+	text-decoration: underline;
+	font-weight: normal;
+}

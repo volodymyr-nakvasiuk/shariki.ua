@@ -1,12 +1,12 @@
 <?php
 	$data = false;
-	foreach($this->data as $submenu){
+	foreach($this->data['data'] as $submenu){
 		if ($submenu['feedback_id'] == $this->selectedId){
 			$data = $submenu;
 			break;
 		}
 	}
-	if (!$data) $data = $this->data[0];
+	if (!$data) $data = $this->data['data'][0];
 ?>
 <?php if (isset($this->faq_error) && $this->faq_error){?>
 <div class="submenu_error_text"><?php echo $this->faq_error;?></div>
@@ -18,31 +18,4 @@
 	<div class="feedback_content_text">
 		<?php echo $data['feedback_text'];?>
 	</div>
-</div>
-<div class="feedback_form">
-<form action="<?php echo $this->fullUrl; ?>" method="post">
-	<div class="faq_form">
-		<div class="faq_form_title">Поблагодарить компанию</div>
-		<div class="input_wraper">
-			<div class="left">ФИО*</div>
-			<div class="right"><input type="text" value="<?php echo (isset($this->faq_error) && $this->faq_error && isset($_POST['name']))?$_POST['name']:'';?>" name="name"/></div>
-			<div class="clr"></div>
-		</div>
-		<div class="input_wraper">
-			<div class="left">Контакты*</div>
-			<div class="right"><input type="text" value="<?php echo (isset($this->faq_error) && $this->faq_error && isset($_POST['contact']))?$_POST['contact']:'';?>" name="contact"/></div>
-			<div class="clr"></div>
-		</div>
-		<div class="input_wraper">
-			<div class="left">Отзыв*</div>
-			<div class="right"><textarea name="text"><?php echo (isset($this->faq_error) && $this->faq_error && isset($_POST['text']))?$_POST['text']:'';?></textarea></div>
-			<div class="clr"></div>
-		</div>
-		<div class="faq_submit">
-			<div class="left">* - поля, обязательные к заполнению</div>
-			<div class="right"><input class="sbmt" type="submit" value="Отправить"></div>
-			<div class="clr"></div>
-		</div>
-	</div>
-</form>
 </div>
