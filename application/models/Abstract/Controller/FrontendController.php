@@ -260,6 +260,7 @@ class Abstract_Controller_FrontendController extends Abstract_Controller_InitCon
 		$this->view->layouts['bottomRow'] = array();
 		$this->view->layouts['bottom'] = array(
 			"bottom_footer_box"=>array('inc/bottom/footer', 100),
+			"bottom_counter_box"=>array('inc/bottom/counter', 200),
 		);
 		
 		$this->setMeta();
