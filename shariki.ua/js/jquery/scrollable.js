@@ -174,7 +174,19 @@
 					fire.trigger("onSeek", [i]);
 				}).animate(props, 0, function(){
 					item.parent().children().hide();
-					$().add(item).add(item.prev()).add(item.next()).show();
+					var tmpSet, tmpItemNext, tmpItemPrev;
+					tmpSet = $().add(item);
+					tmpItemNext = tmpItemPrev = item;
+					for (var i=1; i<conf.moveCount; i++){
+						tmpItemNext = tmpItemNext.next();
+						tmpSet = tmpSet.add(tmpItemNext);
+					}
+					for (var i=0; i<conf.moveCount; i++){
+						tmpItemNext = tmpItemNext.next();
+						tmpItemPrev = tmpItemPrev.prev();
+						tmpSet = tmpSet.add(tmpItemNext).add(tmpItemPrev);
+					}
+					tmpSet.show();
 					itemWrap.css(vertical ? {top: -item.position().top} : {left: -item.position().left});
 				});
 
